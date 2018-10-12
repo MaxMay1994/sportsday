@@ -1,8 +1,17 @@
 ##Sportsday
 Applikation geschrieben in Python (Flask), um den Ablauf des Sporttags zu digitalisieren.
 
-[![pipeline status](https://gitlab.com/awp-sportsday/application/badges/dev/pipeline.svg)](https://gitlab.com/awp-sportsday/application/commits/dev)
-[![coverage report](https://gitlab.com/awp-sportsday/application/badges/dev/coverage.svg)](https://gitlab.com/awp-sportsday/application/commits/dev)
+[dev-pipeline]: https://gitlab.com/awp-sportsday/application/badges/dev/pipeline.svg
+[master-pipeline]: https://gitlab.com/awp-sportsday/application/badges/master/pipeline.svg
+[dev-coverage]: https://gitlab.com/awp-sportsday/application/badges/dev/coverage.svg
+[master-coverage]: https://gitlab.com/awp-sportsday/application/badges/master/coverage.svg
+[dev-commits]: https://gitlab.com/awp-sportsday/application/commits/dev
+[master-commits]: https://gitlab.com/awp-sportsday/application/commits/master
+
+|             Develop                |                  Master                  |
+|------------------------------------|------------------------------------------|
+| [![dev-pipeline][]]([dev-commits]) | [![master-pipeline][]]([master-commits]) |
+| [![dev-coverage][]]([dev-commits]) | [![master-coverage][]]([master-commits]) |
 
 
 ####Requirements:
