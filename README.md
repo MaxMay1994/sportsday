@@ -1,4 +1,4 @@
-##Sportsday
+## Sportsday
 Applikation geschrieben in Python (Flask), um den Ablauf des Sporttags zu digitalisieren.
 
 [dev-pipeline]: https://gitlab.com/awp-sportsday/application/badges/dev/pipeline.svg
@@ -14,14 +14,14 @@ Applikation geschrieben in Python (Flask), um den Ablauf des Sporttags zu digita
 | [![dev-coverage][]]([dev-commits]) | [![master-coverage][]]([master-commits]) |
 
 
-####Requirements:
+#### Requirements:
 + Python >= 3.6
 + PyMongo
 + PyTest
 + Flask
 + etc.
 
-####Allgemeines:
+#### Allgemeines:
 Gitlab **Dev**: https://gitlab.com/awp-sportsday/application/tree/dev <br>
 Gitlab **Master**: https://gitlab.com/awp-sportsday/application/tree/master 
 
