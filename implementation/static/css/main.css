@@ -1,5 +1,44 @@
-body {
-    font-size: 16px;
-    color: red;
+body, html
+{
+    height: 100%;
 }
 
+.btn-outline-primary
+{
+border: 1px solid #FF9900!important;
+color: #FF9900!important;
+}
+
+.btn-outline-primary:hover
+{
+    border: 1px solid #FF9900!important;
+    background-color: #FF9900!important;
+    color: white!important;
+}
+
+.background-image
+{
+    background-image: url("\static\image\KOS.jpg");
+    height: 100%;
+    width: 100%;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.content
+{
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.card-block
+{
+    background-color: rgba(245, 245, 245, 0.4) !important;
+}
