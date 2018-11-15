@@ -1,7 +1,9 @@
-from flask import Flask, redirect
+from flask import Flask
 from implementation.controller.login import LoginController
 from implementation.controller import Controller
 from implementation.controller.user import UserController
+from implementation.controller.error import ErrorController
+
 
 app = Flask(__name__)
 # set Secret key
@@ -19,15 +21,6 @@ def login_form():
     obj = LoginController()
     return obj.get_login_form()
 
-# @app.errorhandler(404)
-# def not_found(error):
-#     return render_template('error.html', error=error), 404
-#
-#
-# @app.errorhandler(500)
-# def internal_error(error):
-#     return render_template('error.html', error=error), 500
-
 
 @app.route('/logout')
 def logout():
@@ -39,6 +32,67 @@ def logout():
 def dashboard():
     obj = UserController()
     return obj.dashboard()
+
+
+# --------------------------------------------------------------
+#
+# H T T P  -  E R R O R  H A N D L I N G
+#
+# --------------------------------------------------------------
+
+
+@app.errorhandler(400)
+def internal_error(error):
+    obj = ErrorController()
+    return obj.get_error_template(error, 400)
+
+
+@app.errorhandler(403)
+def internal_error(error):
+    obj = ErrorController()
+    return obj.get_error_template(error, 403)
+
+
+@app.errorhandler(404)
+def not_found(error):
+    obj = ErrorController()
+    return obj.get_error_template(error, 404)
+
+
+@app.errorhandler(405)
+def internal_error(error):
+    obj = ErrorController()
+    return obj.get_error_template(error, 405)
+
+
+@app.errorhandler(406)
+def internal_error(error):
+    obj = ErrorController()
+    return obj.get_error_template(error, 406)
+
+
+@app.errorhandler(406)
+def internal_error(error):
+    obj = ErrorController()
+    return obj.get_error_template(error, 406)
+
+
+@app.errorhandler(500)
+def internal_error(error):
+    obj = ErrorController()
+    return obj.get_error_template(error, 500)
+
+
+@app.errorhandler(502)
+def internal_error(error):
+    obj = ErrorController()
+    return obj.get_error_template(error, 502)
+
+
+@app.errorhandler(503)
+def internal_error(error):
+    obj = ErrorController()
+    return obj.get_error_template(error, 503)
 
 
 app.run()
