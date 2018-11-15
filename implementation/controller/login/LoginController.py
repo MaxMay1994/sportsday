@@ -1,4 +1,6 @@
 from implementation.controller import Controller
+import json
+from implementation.controller.datenbank import DatenbankController
 from flask import render_template, request, session, redirect, url_for
 
 
@@ -12,6 +14,9 @@ class LoginController(Controller):
             return redirect(url_for('dashboard'))
 
         if request.method == 'POST':
+            db = DatenbankController()
+            json.loads(db.get_login_information())
+
             if request.form['login-username'] == 'admin' and request.form['login-password'] == 'admin':
                 session['username'] = request.form['login-username']
                 return redirect(url_for('dashboard'))
