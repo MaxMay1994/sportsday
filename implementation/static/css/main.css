@@ -1,44 +1,101 @@
-body, html
+body {
+    background-color: #fff;
+}
+
+button .button {
+    transition: border 1s ease-in-out 0;
+}
+
+.card-header {
+    background-color: rgba(0,0,0,.06)!important;
+}
+
+.card-body {
+    background-color: rgba(0,0,0,.03)!important;
+}
+
+input {
+    background-color: transparent!important;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="dropdown"]:focus,
+input[type="checkbox"]:focus,
+input[type="radio"]:focus
 {
-    height: 100%;
+    border-color: #28a745!important;
+    box-shadow: 0 0 15px #28a745;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.btn-outline-primary:focus
+
+{
+    box-shadow: none!important;
+}
+
+input[type="text"]:active,
+input[type="password"]:active,
+input[type="dropdown"]:active,
+input[type="checkbox"]:active,
+input[type="radio"]:active,
+button[type="submit"]:active,
+button[type="button"]:active,
+button[type="reset"]:active
+{
+    border-color: #28a745!important;
+    box-shadow: 0 0 15px #28a745;
 }
 
 .btn-outline-primary
 {
+
 border: 1px solid #FF9900!important;
 color: #FF9900!important;
 }
 
-.btn-outline-primary:hover
+.btn-outline-primary:hover, .btn-outline-primary:active
 {
-    border: 1px solid #FF9900!important;
-    background-color: #FF9900!important;
-    color: white!important;
+
+    border: 1px solid #0059b3!important;
+    background: none!important;
+    color: #0059b3!important;
 }
 
-.background-image
-{
-    background-image: url("\static\image\KOS.jpg");
-    height: 100%;
-    width: 100%;
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.btn-outline-success {
+    transition: border-color 0.3s ease-in 0s, color 0.4s ease-in-out 0s;
 }
 
-.content
+.btn-outline-success:hover, .btn-outline-success:active
 {
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    margin-left: 20px;
-    margin-right: 20px;
+
+    border: 1px solid #0059b3!important;
+    background: none!important;
+    color: #0059b3!important;
 }
 
 .card-block
 {
     background-color: rgba(245, 245, 245, 0.4) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #28a745;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+.blue {
+    color: #0059b3;
+}
+
+.organge {
+    color: #FF9900;
 }
