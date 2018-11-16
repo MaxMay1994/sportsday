@@ -2,24 +2,42 @@
 
 {% block content %}
 <div class="row">
+    {% if fehler == True %}
+        <div class="alert alert-danger">Ihre Anmeldetdaten waren falsch bitte geben Sie diese erneut ein.</div>
+    {% endif %}
 
+    <div class="content" align="center">
 
-    <div class="offset-3 col-3">
-        {% if fehler == True %}
-            <div class="alert alert-danger">Ihre Anmeldetdaten waren falsch bitte geben Sie diese erneut ein.</div>
-        {% endif %}
+        <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 36rem; margin-top: 8em" >
+            <div class="card-body">
+                <div>
+                    <img class="card-img-top" src="/static/image/sports_day_login.png" alt="Card image cap">
+                </div>
 
-        <form action="/login" method="post" class="form-group">
-            <div class="form-group">
-                <label for="login-username">Benutzername</label>
-                <input class="input-group" type="text" placeholder="username" id="login-username" name="login-username">
-            </div>
-            <div class="form-group">
-                <label for="login-username">Passwort</label>
-                <input class="input-group" type="password" placeholder="password" id="login-password" name="login-password">
-            </div>
-            <input type="submit" class="btn btn-success" value="Absenden">
-        </form>
+                <div class="input-group mb-3" style="margin-top: 2em">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Station</span>
+                    </div>
+                    <input type="text" name="login-username"  class="form-control" placeholder="z.B. 1234" aria-label="station" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text pr-4 pl-4">PIN</span>
+                    </div>
+                    <input type="password" name="login-password" class="form-control" placeholder="****" aria-label="pin" aria-describedby="basic-addon1">
+                </div>
+
+                <div align="right">
+                    <button type="button" name="button" class="btn btn-outline-primary">Login</button>
+                </div>
+
+          </div>
+        </div>
+
     </div>
+
+<div class="background-image"></div>
+
 </div>
 {% endblock %}
