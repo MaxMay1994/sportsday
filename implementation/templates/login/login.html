@@ -2,11 +2,13 @@
 
 {% block content %}
 <div class="row">
-    {% if fehler == True %}
-        <div class="alert alert-danger">Ihre Anmeldetdaten waren falsch bitte geben Sie diese erneut ein.</div>
-    {% endif %}
+
 
     <div class="offset-3 col-3">
+        {% if fehler == True %}
+            <div class="alert alert-danger">Ihre Anmeldetdaten waren falsch bitte geben Sie diese erneut ein.</div>
+        {% endif %}
+
         <form action="/login" method="post" class="form-group">
             <div class="form-group">
                 <label for="login-username">Benutzername</label>

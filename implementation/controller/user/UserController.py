@@ -7,7 +7,7 @@ class UserController(Controller):
         pass
 
     def dashboard(self):
-        if 'username' in session:
-            return render_template('user/dashboard.html', user=escape(session['username']))
+        if 'username' in session and 'role' in session:
+            return render_template('user/dashboard_' + session['role'] + '.html', user=escape(session['username']))
         else:
             return redirect(url_for('login_form'))
