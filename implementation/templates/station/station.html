@@ -1,0 +1,58 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<style>
+.bg-image
+{
+    background-image: url("\static\image\KOS.jpg");
+    height: 100%;
+    width: 100%;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+</style>
+
+<div class="bg-image"></div>
+<!--
+<div class="content" align="center">
+
+    <div class="card shadow p-3 mb-5 bg-white rounded" style="max-width: 32rem; margin-top: 8em" >
+        <div class="card-body">
+            <div>
+                <img class="card-img-top" src="{{station_image}}" alt="Card image cap">
+            </div>
+
+            <dl class="row">
+                <dt class="col-sm-3"align="left">Punkte:</dt>
+                <dd class="col-sm-9"align="left">6</dd>
+
+                <dt class="col-sm-3"align="left">Ort:</dt>
+                <dd class="col-sm-9"align="left">A108</dd>
+
+                <dt class="col-sm-3"align="left">Beschreibung:</dt>
+                <dd class="col-sm-9"align="left">Dies ist der Text, der die Station beschreibt</dd>
+            </dl>
+
+            <div class="input-group mb-3" style="margin-top: 2em">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Station</span>
+                </div>
+                <input type="text" name=""  class="form-control" placeholder="z.B. 1234" aria-label="station" aria-describedby="basic-addon1">
+            </div>
+
+            <div align="right">
+                <button type="button" name="button" class="btn btn-outline-primary">Punkte Vergeben</button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+-->
+
+{% endblock %}

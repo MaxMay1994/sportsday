@@ -2,13 +2,14 @@
 
 {% block content %}
 <div class="row">
+
     {% if fehler == True %}
         <div class="alert alert-danger">Ihre Anmeldetdaten waren falsch bitte geben Sie diese erneut ein.</div>
     {% endif %}
 
     <div class="content" align="center">
 
-        <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 36rem; margin-top: 8em" >
+        <div class="card shadow p-3 mb-5 bg-white rounded" style="max-width: 36rem; margin-top: 8em" >
             <div class="card-body">
                 <div>
                     <img class="card-img-top" src="/static/image/sports_day_login.png" alt="Card image cap">

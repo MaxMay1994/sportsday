@@ -1,4 +1,4 @@
-from flask import Flask, redirect
+from flask import Flask, redirect, render_template
 from implementation.controller.login import LoginController
 from implementation.controller import Controller
 from implementation.controller.user import UserController
@@ -39,6 +39,13 @@ def logout():
 def dashboard():
     obj = UserController()
     return obj.dashboard()
+
+
+@app.route('/station/<string:station_id>', methods=['GET'])
+def station(station_id):
+    # get * from Station where id = station_id;
+    return render_template('station/station.html',
+                           station_image=station_id)
 
 
 app.run()
