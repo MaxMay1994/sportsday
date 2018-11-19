@@ -1,19 +1,25 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<div class="row">
+
 
     {% if fehler == True %}
         <div class="alert alert-danger">Ihre Anmeldetdaten waren falsch bitte geben Sie diese erneut ein.</div>
     {% endif %}
 
-    <div class="content" align="center">
+    <div align="center">
 
-        <div class="card shadow p-3 mb-5 bg-white rounded" style="max-width: 36rem; margin-top: 8em" >
+        <div class="card shadow" style="width: 32rem; min-width: 28rem; margin-top: 8em" >
+
+            <div class="card-header">
+               <div class="heading">
+                   <h1>Sporttag</h1>
+                   <h3>Klara-Oppenheimer-Schule</h3>
+               </div>
+           </div>
+
+
             <div class="card-body">
-                <div>
-                    <img class="card-img-top" src="/static/image/sports_day_login.png" alt="Card image cap">
-                </div>
 
                 <div class="input-group mb-3" style="margin-top: 2em">
                     <div class="input-group-prepend">
@@ -30,7 +36,7 @@
                 </div>
 
                 <div align="right">
-                    <button type="button" name="button" class="btn btn-outline-primary">Login</button>
+                    <button type="button" name="button" class="btn btn-outline-primary"style="width: 8rem">Login</button>
                 </div>
 
           </div>
@@ -38,7 +44,7 @@
 
     </div>
 
-<div class="background-image"></div>
 
-</div>
+
+
 {% endblock %}

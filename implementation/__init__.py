@@ -44,8 +44,17 @@ def dashboard():
 @app.route('/station/<string:station_id>', methods=['GET'])
 def station(station_id):
     # get * from Station where id = station_id;
+    station_emoji="⚽"
+    station_title = "Fußball"
+    station_points = "6"
+    station_location = "A005"
+    station_description = "Das ist ein Text, der Beschreibt was die Station macht. bla bla hsda hasg ohagöa hagiösd"
     return render_template('station/station.html',
-                           station_image=station_id)
+                           station_emoji=station_emoji,
+                           station_title=station_title,
+                           station_points=station_points,
+                           station_location=station_location,
+                           station_description=station_description)
 
 
 app.run()

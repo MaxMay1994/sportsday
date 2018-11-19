@@ -2,45 +2,42 @@
 
 {% block content %}
 
-<style>
-.bg-image
-{
-    background-image: url("\static\image\KOS.jpg");
-    height: 100%;
-    width: 100%;
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+<div align="center">
 
-</style>
+    <div class="card shadow" style="max-width: 32rem; margin-top: 8em" >
 
-<div class="bg-image"></div>
-<!--
-<div class="content" align="center">
 
-    <div class="card shadow p-3 mb-5 bg-white rounded" style="max-width: 32rem; margin-top: 8em" >
-        <div class="card-body">
+        <div class="card-header">
             <div>
-                <img class="card-img-top" src="{{station_image}}" alt="Card image cap">
+                <div class='verified'>
+                    <div class='inner'>
+                        <p>
+                            {{ station_emoji }}
+                            <span>{{ station_title }}</span>
+                         </p>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <div class="card-body">
+
+
 
             <dl class="row">
                 <dt class="col-sm-3"align="left">Punkte:</dt>
-                <dd class="col-sm-9"align="left">6</dd>
+                <dd class="col-sm-9"align="left">{{ station_points }}</dd>
 
                 <dt class="col-sm-3"align="left">Ort:</dt>
-                <dd class="col-sm-9"align="left">A108</dd>
+                <dd class="col-sm-9"align="left">{{ station_location }}</dd>
 
                 <dt class="col-sm-3"align="left">Beschreibung:</dt>
-                <dd class="col-sm-9"align="left">Dies ist der Text, der die Station beschreibt</dd>
+                <dd class="col-sm-9"align="left">{{ station_description }}</dd>
             </dl>
 
             <div class="input-group mb-3" style="margin-top: 2em">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">Station</span>
+                    <span class="input-group-text">Schülernummer</span>
                 </div>
                 <input type="text" name=""  class="form-control" placeholder="z.B. 1234" aria-label="station" aria-describedby="basic-addon1">
             </div>
@@ -53,6 +50,5 @@
     </div>
 
 </div>
--->
 
 {% endblock %}
