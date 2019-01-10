@@ -20,8 +20,8 @@ input[type="dropdown"]:focus,
 input[type="checkbox"]:focus,
 input[type="radio"]:focus
 {
-    border-color: #28a745!important;
-    box-shadow: 0 0 15px #28a745;
+    border-color: #ffa500!important;
+    box-shadow: 0 0 15px #ffa500;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active,
@@ -40,23 +40,23 @@ button[type="submit"]:active,
 button[type="button"]:active,
 button[type="reset"]:active
 {
-    border-color: #28a745!important;
-    box-shadow: 0 0 15px #28a745;
+    border-color: #ffa500!important;
+    box-shadow: 0 0 15px #ffa500;
 }
 
 .btn-outline-primary
 {
 
-border: 1px solid #FF9900!important;
-color: #FF9900!important;
+border: 1px solid #ffa500!important;
+color: #ffa500!important;
 }
 
 .btn-outline-primary:hover, .btn-outline-primary:active
 {
 
-    border: 1px solid #0059b3!important;
-    background: none!important;
-    color: #0059b3!important;
+    border: 1px solid #fff!important;
+    background: #ffa500!important;
+    color: #fff!important;
 }
 
 .btn-outline-success {
@@ -77,7 +77,7 @@ color: #FF9900!important;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #28a745;
+    color: #ffa500;
 }
 
 h1 {
