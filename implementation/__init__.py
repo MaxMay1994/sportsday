@@ -1,7 +1,9 @@
-from flask import Flask, redirect, render_template
+from flask import Flask, redirect, render_template, request
 from implementation.controller.login import LoginController
 from implementation.controller import Controller
 from implementation.controller.user import UserController
+from implementation.controller.station import StationController
+from implementation.controller.datenbank import DatenbankController
 from implementation.controller.error import ErrorController
 
 
@@ -28,10 +30,10 @@ def logout():
     return obj.logout()
 
 
-@app.route('/dashboard')
-def dashboard():
-    obj = UserController()
-    return obj.dashboard()
+@app.route('/station', methods=['GET', 'POST'])
+def station():
+    obj = StationController()
+    return obj.get_station()
 
 
 # --------------------------------------------------------------
@@ -93,21 +95,6 @@ def internal_error(error):
 def internal_error(error):
     obj = ErrorController()
     return obj.get_error_template(error, 503)
-
-@app.route('/station/<string:station_id>', methods=['GET'])
-def station(station_id):
-    # get * from Station where id = station_id;
-    station_emoji="⚽"
-    station_title = "Fußball"
-    station_points = "6"
-    station_location = "A005"
-    station_description = "Das ist ein Text, der Beschreibt was die Station macht. bla bla hsda hasg ohagöa hagiösd"
-    return render_template('station/station.html',
-                           station_emoji=station_emoji,
-                           station_title=station_title,
-                           station_points=station_points,
-                           station_location=station_location,
-                           station_description=station_description)
 
 
 app.run()

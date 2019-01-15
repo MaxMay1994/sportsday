@@ -11,14 +11,14 @@ class LoginController(Controller):
         self.stations = []
 
     def get_login_form(self):
-        if 'username' in session:
-            return redirect(url_for('dashboard'))
+        if 'username' in session and 'defaultRoute' in session:
+            return redirect(url_for(session['defaultRoute']))
 
         if request.method == 'POST':
             db = DatenbankController()
 
-            self.superusers = db.get_login_information('superUser')
-            self.stations = db.get_login_information('station')
+            self.superusers = db.get_information('superUser')
+            self.stations = db.get_information('station')
 
             return self.validate_login()
 
@@ -33,13 +33,15 @@ class LoginController(Controller):
             if request.form['login-username'] == account['username'] and self.hash_password(request.form['login-password'], account['timestamp'], account['salt']) == account['password']:
                 session['username'] = request.form['login-username']
                 session['role'] = 'superUser'
+                session['defaultRoute'] = 'dashboard'
                 return redirect(url_for('dashboard'))
 
         for account in self.stations:
             if request.form['login-username'] == account['stationname'] and self.hash_password(request.form['login-password'], account['timestamp'], account['salt']) == account['pin']:
                 session['username'] = request.form['login-username']
                 session['role'] = 'station'
-                return redirect(url_for('dashboard'))
+                session['defaultRoute'] = 'station'
+                return redirect(url_for('station'))
 
         return render_template('login/login.html', fehler=True)
 

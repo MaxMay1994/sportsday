@@ -1,5 +1,4 @@
 from flask import session, request, render_template
-import json
 from pymongo import MongoClient
 from implementation.controller import Controller
 
@@ -11,8 +10,18 @@ class DatenbankController(Controller):
         self.client = MongoClient(self.dbServer, self.dbPort)
         self.currentDB = self.client[dbname]
 
-    def get_login_information(self, collection):
-        self.login_information = []
+    def get_information(self, collection):
+        self.information = []
         for document in self.currentDB[collection].find():
-            self.login_information.append(document)
-        return self.login_information
+            self.information.append(document)
+        return self.information
+
+    def get_station_information(self, collection='station'):
+        return self.currentDB[collection].find_one({'stationname': session['username']})
+
+    def get_student_information(self, filter_param):
+        return self.currentDB['students'].find_one(filter_param)
+
+    def update_points(self, data):
+        self.currentDB['students'].update_one({'number': data['number']},
+                                              {'$set': {'points': data['points']}})
