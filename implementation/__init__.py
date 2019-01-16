@@ -48,7 +48,8 @@ def dash_station():
 
 @app.route('/dashboard/station/verwalten')
 def manage_station():
-    return 0
+    obj = StationController()
+    return obj.manage_station()
 
 
 @app.route('/dashboard/klasse')
@@ -124,9 +125,5 @@ def internal_error(error):
     obj = ErrorController()
     return obj.get_error_template(error, 503)
 
-
-@app.route('/stationadmin')
-def stationadmin():
-    return render_template('station/stationadmin.html', stationen=3)
 
 app.run()

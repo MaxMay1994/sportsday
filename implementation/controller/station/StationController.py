@@ -23,3 +23,5 @@ class StationController(Controller):
 
         return render_template('station/station.html', station=station_information)
 
+    def manage_station(self):
+        return render_template('station/station_manage.html', stationen={0, 1, 2})
