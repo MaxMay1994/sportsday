@@ -73,12 +73,6 @@ def internal_error(error):
     return obj.get_error_template(error, 406)
 
 
-@app.errorhandler(406)
-def internal_error(error):
-    obj = ErrorController()
-    return obj.get_error_template(error, 406)
-
-
 @app.errorhandler(500)
 def internal_error(error):
     obj = ErrorController()
