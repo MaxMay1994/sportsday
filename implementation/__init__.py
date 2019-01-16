@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request
+from flask import Flask, redirect, url_for
 from implementation.controller.login import LoginController
 from implementation.controller import Controller
 from implementation.controller.user import UserController
@@ -35,6 +35,40 @@ def station():
     obj = StationController()
     return obj.get_station()
 
+
+@app.route('/dashboard')
+def dashboard():
+    return 0
+
+
+@app.route('/dashboard/station')
+def dash_station():
+    return redirect(url_for('/dashboard/station/verwalten'))
+
+
+@app.route('/dashboard/station/verwalten')
+def manage_station():
+    return 0
+
+
+@app.route('/dashboard/klasse')
+def dash_class():
+    return redirect(url_for('/dashboard/klasse/verwalten'))
+
+
+@app.route('/dashboard/klasse/verwalten')
+def manage_class():
+    return 0
+
+
+@app.route('/dashboard/laufzettel')
+def dash_slip():
+    return redirect(url_for('/dashboard/laufzettel/generieren'))
+
+
+@app.route('/dashboard/laufzettel/generieren')
+def generate_slip():
+    return 0
 
 # --------------------------------------------------------------
 #
