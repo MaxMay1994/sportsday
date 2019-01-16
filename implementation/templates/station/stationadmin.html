@@ -1,0 +1,81 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<h1 style="width: 32rem; min-width: 28rem; margin-top: 2em; margin-bottom: 2em; margin-left: 12em">Stationen Verwalten</h1>
+
+{% for station in range(0, stationen) %}
+<!-- <div style="position: absolute; left: 10%; margin-left: 225px; width: 650px; height: 250px; background: blue; border: 8px solid black"> content -->
+<div class="accordion" id="accordionExample" style="width: 32rem; min-width: 28rem; margin-left: 25em">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button class="btn btn-link text-primary" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <!--{{ station['stationname'] }} --> Fußball
+          </button>
+        </h5>
+      </div>
+
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          <form>
+            <div class="container">
+              <div class="form-group row justify-content-end">
+                <div class="col">
+                <label for="inputEmail4">Stationsname</label>
+                <input type="text" class="form-control" id="inputEmail4" placeholder="Stationsname">
+                </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="form-group row justify-content-end">
+                <div class="col">
+                <label for="inputPassword4">Punkte</label>
+                <input type="text" class="form-control" id="inputPassword4" placeholder="3">
+                </div>
+              </div>
+            </div>
+
+            <div class="container">
+              <div class="form-group row justify-content-end">
+                <div class="col">
+                  <label for="inputAddress">Ort</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="S.Oliver Arena">
+                </div>
+              </div>
+            </div>
+
+            <div class="container">
+              <div class="form-group row justify-content-end">
+                <div class="col">
+                  <label for="inputAddress2">Beschreibung</label>
+                  <input type="text" class="form-control" id="inputAddress2" placeholder="Nur mit Hallenschuhe">
+                </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="form-group row justify-content-end">
+                <div class="col">
+                <label for="inputCity">PIN</label>
+                <input type="text" class="form-control" id="inputCity" placeholder="1234">
+                </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-sm">
+              <button type="submit" class="btn btn-outline-primary">Bearbeiten</button>
+                </div>
+                <div class="col-sm">
+              <button type="submit" class="btn btn-outline-danger">Löschen</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}

@@ -57,4 +57,8 @@ def station(station_id):
                            station_description=station_description)
 
 
+@app.route('/stationadmin')
+def stationadmin():
+    return render_template('station/stationadmin.html', stationen=3)
+
 app.run()
