@@ -1,54 +1,49 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
+<div class="row mb-5">
+    <div class="offset-md-10 col-md-2 offset-9 col-3">
+        <a href="/logout" class="btn btn-outline-danger">Logout</a>
+    </div>
+</div>
+<div class="row">
+    <div class="offset-xl-4 col-xl-4 offset-2 col-8">
+        <div class="card shadow">
+            <div class="card-header">
+                <div class="row mb-2">
+                    <div class="col-12 text-center"><i class="far fa-3x text-success fa-check-circle"></i></div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center">{{ station['stationname'] }}</div>
+                </div>
+            </div>
 
-<div align="center">
+            <div class="card-body">
+                <dl class="row text-left">
+                    <dt class="col-sm-5">Punkte:</dt>
+                    <dd class="col-sm-7">{{ station['points'] }}</dd>
 
-    <div class="card shadow" style="max-width: 32rem; margin-top: 8em" >
+                    <dt class="col-sm-5">Ort:</dt>
+                    <dd class="col-sm-7">{{ station['area'] }}</dd>
 
+                    <dt class="col-sm-5">Beschreibung:</dt>
+                    <dd class="col-sm-7">{{ station['description'] }}</dd>
+                </dl>
 
-        <div class="card-header">
-            <div>
-                <div class='verified'>
-                    <div class='inner'>
-                        <p>
-                            {{ station_emoji }}
-                            <span>{{ station_title }}</span>
-                         </p>
+                <form action="/station" method="post">
+                    <div class="input-group mb-3 mt-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Schülernummer</span>
+                        </div>
+                        <input type="text" name="student" class="form-control" placeholder="z.B. 1234"
+                               aria-label="station" aria-describedby="basic-addon1">
                     </div>
-                </div>
+                    <div align="right">
+                        <button type="submit" name="button" class="btn btn-outline-primary">Punkte Vergeben</button>
+                    </div>
+                </form>
             </div>
-        </div>
-
-        <div class="card-body">
-
-
-
-            <dl class="row">
-                <dt class="col-sm-3"align="left">Punkte:</dt>
-                <dd class="col-sm-9"align="left">{{ station_points }}</dd>
-
-                <dt class="col-sm-3"align="left">Ort:</dt>
-                <dd class="col-sm-9"align="left">{{ station_location }}</dd>
-
-                <dt class="col-sm-3"align="left">Beschreibung:</dt>
-                <dd class="col-sm-9"align="left">{{ station_description }}</dd>
-            </dl>
-
-            <div class="input-group mb-3" style="margin-top: 2em">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Schülernummer</span>
-                </div>
-                <input type="text" name=""  class="form-control" placeholder="z.B. 1234" aria-label="station" aria-describedby="basic-addon1">
-            </div>
-
-            <div align="right">
-                <button type="button" name="button" class="btn btn-outline-primary">Punkte Vergeben</button>
-            </div>
-
         </div>
     </div>
-
 </div>
-
 {% endblock %}

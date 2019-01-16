@@ -1,0 +1,11 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<div class="row">
+    <div class="offset-2 col-8">
+        <div class="alert alert-success">
+            Du hast dich erfolgreich angemeldet. {{ user }}<br>
+            <a href="/logout">Hier wieder abmelden</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
