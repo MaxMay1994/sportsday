@@ -2,3 +2,6 @@ flask
 pymongo
 pytest
 setuptools
+pyqrcode
+pdfkit
+wkhtmltopdf
