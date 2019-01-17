@@ -1,10 +1,12 @@
 from implementation.controller import Controller
+from implementation.controller.datenbank import DatenbankController
 from flask import Flask, render_template, make_response
 import pdfkit
 import pyqrcode
 
 
 class PdfController(Controller):
+    db = DatenbankController()
 
     def __init__(self):
         pass
@@ -14,6 +16,7 @@ class PdfController(Controller):
         return qr.png('static/image/qrcode/' + key + '.png', scale=5)
 
     def create_pdf(self):
+
         template = render_template('pdf/station.html')
         pdf = pdfkit.from_string(template, False)
         response = make_response(pdf)

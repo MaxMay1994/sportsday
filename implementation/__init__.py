@@ -5,6 +5,7 @@ from implementation.controller.user import UserController
 from implementation.controller.station import StationController
 from implementation.controller.datenbank import DatenbankController
 from implementation.controller.error import ErrorController
+from implementation.controller.pdf import PdfController
 
 
 app = Flask(__name__)
@@ -34,6 +35,12 @@ def logout():
 def station():
     obj = StationController()
     return obj.get_station()
+
+
+@app.route('/pdf', methods=['GET'])
+def pdf():
+    obj = PdfController()
+    return obj.create_pdf()
 
 
 # --------------------------------------------------------------
