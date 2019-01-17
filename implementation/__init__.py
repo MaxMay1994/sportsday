@@ -37,12 +37,6 @@ def station():
     return obj.get_station()
 
 
-@app.route('/pdf', methods=['GET'])
-def pdf():
-    obj = PdfController()
-    return obj.create_pdf()
-
-
 @app.route('/dashboard')
 def dashboard():
     return 0
@@ -75,7 +69,8 @@ def dash_slip():
 
 @app.route('/dashboard/laufzettel/generieren')
 def generate_slip():
-    return 0
+    obj = PdfController()
+    return obj.create_pdf()
 
 # --------------------------------------------------------------
 #

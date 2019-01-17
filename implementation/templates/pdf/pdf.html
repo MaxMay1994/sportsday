@@ -1,749 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/static/css/main.css" rel="stylesheet">
-  <script src="/static/js/main.js"></script>
- <!-- C:/Developer/Sports Day/application/implementation -->
+    {% set bootstrap_min_path =  path  +  '/static/css/bootstrap/bootstrap.min.css'  %}
+    {% set bootstrap_path =  path +  '/static/css/bootstrap/main.css'  %}
+    {% set bootstrap_js_path =  path  +  '/static/js/bootstrap/main.js'  %}
+    <link href="{{bootstrap_min_path}}" rel="stylesheet">
+    <link href="{{bootstrap_path}}" rel="stylesheet">
+    <script src="{{bootstrap_js_path}}"></script>
+    <!-- C:/Developer/Sports Day/application/implementation -->
     <meta name="pdfkit-orientation" content="Landscape"/>
 </head>
 
 <style>
-
-
-.table td, .table th{
-border-top: 0px
-}
+    .table td, .table th{
+    border-top: 0px
+    }
 </style>
+
 <body>
 
 
+    {% for paper in students_table %}
 
 
+    <table class="table" style="border-top: 0px; margin-bottom: 50px">
+        <tbody>
+            <tr class="table table-borderless">
+                <td class="table table-borderless text-center" scope="col" style="width: 30%"><b>Klara Oppenheimer Schule - Sporttag {{ year }}</b> </td>
+                <td class="table table-borderless text-center" scope="col" style="width: 5%">|</td>
+                <td class="table table-borderless text-center" scope="col" style="width: 30%"><b>Klara Oppenheimer Schule - Sporttag {{ year }}</b></td>
+                <td class="table table-borderless text-center" scope="col" style="width: 5%">|</td>
+                <td class="table table-borderless text-center" scope="col" style="width: 30%"><b>Klara Oppenheimer Schule - Sporttag {{ year }}</b></td>
 
-<table class="table" style="border-top: 0px; margin-bottom: 0px">
-  <tbody>
+                <tr>
 
-      <tr class="table table-borderless">
-        <td class="table table-borderless text-center" scope="col" style="width: 30%"><b>Klara Oppenheimer Schule - Sporttag 2019</b> </td>
-        <td class="table table-borderless text-center" scope="col" style="width: 5%">|</td>
-        <td class="table table-borderless text-center" scope="col" style="width: 30%"><b>Klara Oppenheimer Schule - Sporttag 2019</b></td>
-        <td class="table table-borderless text-center" scope="col" style="width: 5%">|</td>
-        <td class="table table-borderless text-center" scope="col" style="width: 30%"><b>Klara Oppenheimer Schule - Sporttag 2019</b></td>
 
+                    {% for student in paper %}
 
-    <tr>
-      <td>
+                    {% set student_number %}{{ student.number }}{% endset %}
+                    {% set image_path =  image_path  +  student_number  +  image_format  %}
 
+                    <td>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 50%" scope="col">Nummer: {{ student.number }}<br>Klasse: {{ student.class }}</th>
+                                    <th class="text-center" style="width: 50%; padding: 0px" scope="col"><img src="{{ image_path }}" style="width: 84px; height: 84px"></th>
+                                </tr>
 
-        <table class="table table-bordered">
+                                {% for row in station_table %}
+                                    <tr style="height: 100px">
 
-  <tbody>
+                                        {% for cell in row %}
+                                            <td>
 
-    <tr>
-      <th style="width: 50%" scope="col">Nummer: 1234<br>Klasse: 12FI4</th>
-      <th class="text-center" style="width: 50%; padding: 0px" scope="col"><img src="C:/Developer/Sports Day/application/implementation/static/image/qrcode/test3.png" style="width: 84px; height: 84px"></th>
-    </tr>
+                                                {% if cell.stationname %}
+                                                    <b>{{cell.stationname}}</b>
+                                                    <br>
+                                                    Ort: {{cell.area}}
+                                                    <br>
+                                                    Punkte: {{cell.points}}
+                                                {% endif %}
 
-   <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
+                                            </td>
+                                        {% endfor %}
 
+                                     </tr>
+                                {% endfor %}
 
-    <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
+                             </tbody>
+                        </table>
+                    </td>
 
-
-   <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-
-   <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-
-   <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-
-   <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-     <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-       <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-       <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-
-       <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-
-       <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-
-       <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-
-       <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-
-
-
-
-
-
-
-  </tbody>
-</table>
-      </td>
-
-        <td class="text-center" scope="col">
-
-          |<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|<br><br>
-          |<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|
-
-
-        </td>
-
-
-
-      <td>
-
-
-       <table class="table table-bordered">
-
-  <tbody>
-
-    <tr>
-      <th style="width: 50%" scope="col">Nummer: 1234<br>Klasse: 12FI4</th>
-      <th class="text-center" style="width: 50%; padding: 0px" scope="col"><img src="C:/Developer/Sports Day/application/implementation/static/image/qrcode/test3.png" style="width: 84px; height: 84px"></th>
-    </tr>
-
-   <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-
-   <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-
-   <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-
-   <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-
-   <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-
-   <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-     <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-     <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-     <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-     <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-     <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-     <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-     <tr style="height: 120px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-
-  </tbody>
-</table>
-
-
-      </td>
-
+                {% if not loop.last %}
                 <td class="text-center" scope="col">
+                    |<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|<br><br>
+                    |<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|
+                </td>
+                {% endif %}
 
-          |<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|<br><br>
-          |<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|<br><br>|
-
-
-        </td>
-
-
-              <td>
-
-
-       <table class="table table-bordered">
-
-  <tbody>
-
-      <tr>
-      <th style="width: 50%" scope="col">Nummer: 1234<br>Klasse: 12FI4</th>
-      <th class="text-center" style="width: 50%; padding: 0px" scope="col"><img src="C:/Developer/Sports Day/application/implementation/static/image/qrcode/test3.png" style="width: 84px; height: 84px"></th>
-    </tr>
-
-   <tr style="height: 100px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-
-   <tr style="height: 100px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-
-   <tr style="height: 100px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-
-   <tr style="height: 100px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-
-   <tr style="height: 100px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-   <tr style="height: 100px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-     <tr style="height: 100px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-     <tr style="height: 100px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-     <tr style="height: 100px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-     <tr style="height: 100px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-     <tr style="height: 100px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-     <tr style="height: 100px">
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6
-      </td>
-      <td>
-        <b>Station: Fussball</b>
-        <br>
-        Ort: TGW Halle
-        <br>
-        Punkte: 6</td>
-    </tr>
-
-     {% block content %}{% endblock %}
-
-
+    {% endfor %}
 
   </tbody>
 </table>
-
 
       </td>
     </tr>
   </tbody>
 </table>
+
+
+
+{% endfor %}
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 
 </body>
 </html>
