@@ -24,4 +24,13 @@ class StationController(Controller):
         return render_template('station/station.html', station=station_information)
 
     def manage_station(self):
-        return render_template('station/station_manage.html', stationen={0, 1, 2})
+        if 'username' not in session or 'role' not in session:
+            return redirect(url_for('login_form'))
+
+        db = DatenbankController()
+
+        station_information = db.get_station_information()
+        return render_template('station/station_manage.html', stationen=station_information)
+
+    def add_station(self):
+        return render_template('station/station_add.html')

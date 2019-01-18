@@ -1,0 +1,65 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<form style="width: 32rem; min-width: 28rem; margin-left: 27em">
+    <div class="card bg-light mb-3" style="max-width: 28rem;">
+        <div class="card-header">Station hinzufügen</div>
+        <div class="card-body">
+            <div class="container">
+                <div class="form-group row justify-content-end">
+                    <div class="col">
+                        <label for="inputEmail4">Stationsname</label>
+                        <input type="text" class="form-control" id="inputEmail4" placeholder="Stationsname">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="form-group row justify-content-end">
+                    <div class="col">
+                        <label for="inputPassword4">Punkte</label>
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="3">
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="form-group row justify-content-end">
+                    <div class="col">
+                        <label for="inputAddress">Ort</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="S.Oliver Arena">
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="form-group row justify-content-end">
+                    <div class="col">
+                        <label for="inputAddress2">Beschreibung</label>
+                        <input type="text" class="form-control" id="inputAddress2" placeholder="Nur mit Hallenschuhe">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="form-group row justify-content-end">
+                    <div class="col">
+                        <label for="inputCity">PIN</label>
+                        <input type="text" class="form-control" id="inputCity" placeholder="1234">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <button type="submit" class="btn btn-outline-primary">Speichern</button>
+                    </div>
+                    <div class="col-sm">
+                        <a href="/dashboard/station/verwalten" class="btn btn-outline-danger">Zurück</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

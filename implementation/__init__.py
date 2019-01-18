@@ -51,6 +51,10 @@ def manage_station():
     obj = StationController()
     return obj.manage_station()
 
+@app.route('/dashboard/station/hinzufuegen')
+def add_station():
+    obj = StationController()
+    return obj.add_station()
 
 @app.route('/dashboard/klasse')
 def dash_class():

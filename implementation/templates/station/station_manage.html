@@ -2,21 +2,21 @@
 
 {% block content %}
 
-<h1 style="width: 32rem; min-width: 28rem; margin-top: 2em; margin-bottom: 2em; margin-left: 12em">Stationen Verwalten</h1>
+<h1 style="width: 32rem; min-width: 28rem; margin-top: 2em; margin-bottom: 1em; margin-left: 10em">Stationen Verwalten</h1>
 
 {% for station in stationen %}
 <!-- <div style="position: absolute; left: 10%; margin-left: 225px; width: 650px; height: 250px; background: blue; border: 8px solid black"> content -->
-<div class="accordion" id="accordionExample" style="width: 32rem; min-width: 28rem; margin-left: 25em">
+<div class="accordion" id="accordion{{ station }}" style="width: 32rem; min-width: 28rem; margin-left: 27em">
     <div class="card">
-      <div class="card-header" id="headingOne">
+      <div class="card-header" id="heading{{ station }}">
         <h5 class="mb-0">
-          <button class="btn btn-link text-primary" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            <!--{{ station['stationname'] }} --> Fußball
+          <button class="btn btn-link text-primary" type="button" data-toggle="collapse" data-target="#collapse{{ station }}" aria-expanded="true" aria-controls="collapse{{ station }}">
+            {{ station.stationname }}
           </button>
         </h5>
       </div>
 
-      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div id="collapse{{ station }}" class="collapse" aria-labelledby="heading{{ station }}" data-parent="#accordion{{ station }}">
         <div class="card-body">
           <form>
             <div class="container">
@@ -77,5 +77,15 @@
     </div>
   </div>
 {% endfor %}
+
+ <div class="container" style="width: 32rem; min-width: 28rem; margin-top: 2em; margin-left: 35em">
+   <div class="row">
+     <div class="col-sm">
+       <a href="/dashboard/station/hinzufuegen"><button type="submit" class="btn btn-outline-primary w-50 button draw meet">Neu</button></a>
+     </div>
+   </div>
+ </div>
+
+
 
 {% endblock %}
