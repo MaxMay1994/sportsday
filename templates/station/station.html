@@ -30,6 +30,18 @@
                     <dd class="col-sm-7">{{ station['description'] }}</dd>
                 </dl>
 
+                {% if success is defined and success == 'False' %}
+                    <div class="alert alert-danger">
+                        Die Schülernummer ist ungültig
+                    </div>
+                {% endif %}
+
+                {% if success is defined and success == 'True' %}
+                    <div class="alert alert-success">
+                        Dem Schüler wurden die Punkte gutgeschrieben
+                    </div>
+                {% endif %}
+
                 <form action="/station" method="post">
                     <div class="input-group mb-3 mt-2">
                         <div class="input-group-prepend">

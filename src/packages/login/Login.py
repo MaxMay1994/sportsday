@@ -27,16 +27,12 @@ class Login(AbstractLogin):
         for account in self.superUsers:
             if request.form['login-username'] == account['username'] and self.hash_password(
                     request.form['login-password'], account['timestamp'], account['salt']) == account['password']:
-                information['role'] = 'superUser'
-                information['route'] = 'dashboard'
-                information['redirect'] = 'manage_station'
+                information = {'role': 'superUser', 'route': 'dashboard', 'redirect': 'manage_station'}
 
         for account in self.stations:
             if request.form['login-username'] == account['stationname'] and self.hash_password(
                     request.form['login-password'], account['timestamp'], account['salt']) == account['pin']:
-                information['role'] = 'station'
-                information['route'] = 'station'
-                information['redirect'] = 'station'
+                information = {'role': 'station', 'route': 'station', 'redirect': 'station'}
 
         return information
 

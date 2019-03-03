@@ -16,10 +16,13 @@ class DatenbankController(Controller):
             self.information.append(document)
         return self.information
 
-    def get_station_information(self, collection='station'):
+    def get_current_station(self, collection='station'):
         return self.currentDB[collection].find_one({'stationname': session['username']})
 
     def get_student_information(self, filter_param):
+        return self.currentDB['students'].find_one(filter_param)
+
+    def get_station_information(self, filter_param):
         return self.currentDB['students'].find_one(filter_param)
 
     def update_points(self, data):
