@@ -10,7 +10,7 @@ class LoginController(Controller):
         self.stations = []
 
     def get_login_form(self):
-        respone = False
+        response = False
 
         if request.method == 'POST':
             login = Login()
@@ -18,10 +18,10 @@ class LoginController(Controller):
 
             if information is not None:
                 login.login(information)
-                return render_template('login/login.html', fehler=respone)
+                return render_template('login/login.html', fehler=response)
             response = True
 
-        return render_template('login/login.html', fehler=respone)
+        return render_template('login/login.html', fehler=response)
 
     def logout(self):
         login = Login()
