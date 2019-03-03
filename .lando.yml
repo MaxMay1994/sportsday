@@ -1,0 +1,14 @@
+name: sportsday
+
+services:
+  appserver:
+    type: python:3.6
+    portforward: 8000
+    command: python /app/__init__.py
+  database:
+    type: mongo:4.0.6
+    portforward: true
+
+events:
+  pre-start:
+    - appserver: pip install --no-cache-dir -r requirements.txt
