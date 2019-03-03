@@ -42,23 +42,23 @@ def station():
 
 @app.route('/dashboard')
 def dashboard():
-    if 'role' not in session or session['role'] != 'station':
+    if 'role' not in session or session['role'] != 'superUser':
         return redirect(url_for('login_form'))
 
-    return redirect(url_for('/dashboard/station/verwalten'))
+    return redirect(url_for('manage_station'))
 
 
 @app.route('/dashboard/station')
 def dash_station():
-    if 'role' not in session or session['role'] != 'station':
+    if 'role' not in session or session['role'] != 'superUser':
         return redirect(url_for('login_form'))
 
-    return redirect(url_for('/dashboard/station/verwalten'))
+    return redirect(url_for('manage_station'))
 
 
 @app.route('/dashboard/station/verwalten', methods=['GET', 'POST'])
 def manage_station():
-    if 'role' not in session or session['role'] != 'superuser':
+    if 'role' not in session or session['role'] != 'superUser':
         return redirect(url_for('login_form'))
 
     obj = StationController()
@@ -67,7 +67,7 @@ def manage_station():
 
 @app.route('/dashboard/station/erstellen', methods=['GET', 'POST'])
 def add_station():
-    if 'role' not in session or session['role'] != 'superuser':
+    if 'role' not in session or session['role'] != 'superUser':
         return redirect(url_for('login_form'))
 
     obj = StationController()
@@ -76,34 +76,34 @@ def add_station():
 
 @app.route('/dashboard/klasse')
 def dash_class():
-    if 'role' not in session or session['role'] != 'superuser':
+    if 'role' not in session or session['role'] != 'superUser':
         return redirect(url_for('login_form'))
 
-    return redirect(url_for('/dashboard/klasse/verwalten'))
+    return redirect(url_for('manage_class'))
 
 
 @app.route('/dashboard/klasse/verwalten')
 def manage_class():
-    if 'role' not in session or session['role'] != 'superuser':
+    if 'role' not in session or session['role'] != 'superUser':
         return redirect(url_for('login_form'))
 
     return 0
 
 
 @app.route('/dashboard/laufzettel')
-def dash_slip():
-    if 'role' not in session or session['role'] != 'superuser':
+def dash_docket():
+    if 'role' not in session or session['role'] != 'superUser':
         return redirect(url_for('login_form'))
 
-    return redirect(url_for('/dashboard/laufzettel/generieren'))
+    return redirect(url_for('generate_docket'))
 
 
 @app.route('/dashboard/laufzettel/generieren')
-def generate_slip():
-    if 'role' not in session or session['role'] != 'superuser':
+def generate_docket():
+    if 'role' not in session or session['role'] != 'superUser':
         return redirect(url_for('login_form'))
 
-    return make_response()
+    return 0
 
 # --------------------------------------------------------------
 #
