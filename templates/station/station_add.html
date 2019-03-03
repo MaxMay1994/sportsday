@@ -1,0 +1,80 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="offset-lg-3 col-lg-6 offset-2 col-8">
+        <div class="row mb-2">
+            <div class="col-12 text-center">
+                <h2>Neue Station anlegen</h2>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-12">
+                <form action="/dashboard/station/erstellen" method="post">
+                    {% if error %}
+                    <div class="row mb-2">
+                        <div class="offset-2 col-8">
+                            <div class="alert alert-danger">
+                                Es ist ein Fehler aufgetreten, bitte legen Sie die Station erneut an.
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="row mb-2">
+                        <div class="offset-2 col-8">
+                            <label for="stationname">Stationsname</label>
+                            <input type="text" class="form-control" name="stationname"
+                                   id="stationname">
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="offset-2 col-8">
+                            <label for="points">Punkte</label>
+                            <input type="text" class="form-control" name="points"
+                                   id="points">
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="offset-2 col-8">
+                            <label for="area">Ort</label>
+                            <input type="text" class="form-control" name="area"
+                                   id="area">
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="offset-2 col-8">
+                            <label for="description">Beschreibung</label>
+                            <input type="text" class="form-control" name="description"
+                                   id="description">
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="offset-2 col-8">
+                            <label for="pin">PIN</label>
+                            <input type="text" class="form-control" name="pin"
+                                   id="pin">
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-2"></div>
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-outline-primary">Speichern</button>
+                        </div>
+                        <div class="col-4 text-right">
+                            <a href="/dashboard/station/verwalten" class="btn btn-outline-danger">Zurück</a>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

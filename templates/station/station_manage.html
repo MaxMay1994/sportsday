@@ -1,0 +1,102 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="offset-lg-3 col-lg-6 offset-2 col-8">
+        <div class="row mb-2">
+            <div class="col-12 text-center">
+                <h2>Stationen verwalten</h2>
+            </div>
+        </div>
+        {% for station in stationen %}
+        <div class="row mb-2">
+            <div class="col-12">
+                <div class="accordion" id="accordion-{{ station.stationname }}">
+                    <div class="card" id="card-{{ station.stationname }}">
+                        <div class="card-header card-hover text-center" id="heading-{{ station.stationname }}">
+                            <a class="font-primary" data-toggle="collapse"
+                               data-target="#collapse-{{ station.stationname }}" aria-expanded="true"
+                               aria-controls="collapse-{{ station.stationname }}">
+                                {{ station.stationname }}
+                            </a>
+                        </div>
+
+                        <div id="collapse-{{ station.stationname }}" class="collapse"
+                             aria-labelledby="heading-{{ station.stationname }}"
+                             data-parent="#accordion-{{ station.stationname }}">
+                            <div class="card-body">
+                                <form action="/dashboard/station/verwalten" method="post">
+                                    <div class="row mb-2">
+                                        <div class="offset-2 col-8">
+                                            <label for="stationname-{{ station.stationname }}">Stationsname</label>
+                                            <input type="text" class="form-control" name="stationname-{{ station.stationname }}" id="stationname-{{ station.stationname }}"
+                                                   readonly disabled value="{{ station.stationname }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-2">
+                                        <div class="offset-2 col-8">
+                                            <label for="points-{{ station.stationname }}">Punkte</label>
+                                            <input type="text" class="form-control" name="points-{{ station.stationname }}" id="points-{{ station.stationname }}"
+                                                   readonly disabled value="{{ station.points }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-2">
+                                        <div class="offset-2 col-8">
+                                            <label for="area-{{ station.stationname }}">Ort</label>
+                                            <input type="text" class="form-control" name="area-{{ station.stationname }}" id="area-{{ station.stationname }}"
+                                                   readonly disabled value="{{ station.area }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-2">
+                                        <div class="offset-2 col-8">
+                                            <label for="description-{{ station.stationname }}">Beschreibung</label>
+                                            <input type="text" class="form-control" name="description-{{ station.stationname }}" id="description-{{ station.stationname }}"
+                                                   readonly disabled value="{{ station.description }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-2">
+                                        <div class="offset-2 col-8">
+                                            <label for="pin-{{ station.stationname }}">PIN</label>
+                                            <input type="text" class="form-control" name="pin-{{ station.stationname }}" id="pin-{{ station.stationname }}"
+                                                   readonly disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-2"></div>
+                                        <div class="col-4">
+                                            <button type="submit" name="edit-{{ station.stationname }}" onclick="edit({{ station.stationname }})" class="btn btn-outline-primary">Bearbeiten
+                                            </button>
+                                        </div>
+                                        <div class="col-4 text-right">
+                                            <button type="submit" name="delete-{{ station.stationname }}" class="btn btn-outline-danger">Löschen</button>
+                                        </div>
+                                        <div class="col-2"></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <a href="/dashboard/station/erstellen" class="btn btn-outline-primary w-25">
+                    Neu
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function edit(station) {
+        $('#card-' + station)
+    }
+</script>
+{% endblock %}

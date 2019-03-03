@@ -1,0 +1,94 @@
+button .button {
+    transition: border 1s ease-in-out 0;
+}
+
+.card-header {
+    background-color: rgba(0,0,0,.06)!important;
+}
+
+.card-body {
+    background-color: rgba(0,0,0,.03)!important;
+}
+
+input {
+    background-color: transparent!important;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="dropdown"]:focus,
+input[type="checkbox"]:focus,
+input[type="radio"]:focus
+{
+    border-color: #ffa500!important;
+    box-shadow: 0 0 15px #ffa500;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.btn-outline-primary:focus
+
+{
+    box-shadow: none!important;
+}
+
+input[type="text"]:active,
+input[type="password"]:active,
+input[type="dropdown"]:active,
+input[type="checkbox"]:active,
+input[type="radio"]:active,
+button[type="submit"]:active,
+button[type="button"]:active,
+button[type="reset"]:active
+{
+    border-color: #ffa500!important;
+    box-shadow: 0 0 15px #ffa500;
+}
+
+.btn-outline-primary
+{
+
+border: 1px solid #ffa500!important;
+color: #ffa500!important;
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:active
+{
+
+    border: 1px solid #fff!important;
+    background: #ffa500!important;
+    color: #fff!important;
+}
+
+.btn-outline-success {
+    transition: border-color 0.3s ease-in 0s, color 0.4s ease-in-out 0s;
+}
+
+.btn-outline-success:hover, .btn-outline-success:active
+{
+
+    border: 1px solid #0059b3!important;
+    background: none!important;
+    color: #0059b3!important;
+}
+
+.card-block
+{
+    background-color: rgba(245, 245, 245, 0.4) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #ffa500;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+.card-hover:hover {
+    background-color: #ffa500!important;
+    color: #ffffff!important;
+}

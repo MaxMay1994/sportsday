@@ -1,0 +1,3 @@
+
+class AbstractObject(object):
+    pass
