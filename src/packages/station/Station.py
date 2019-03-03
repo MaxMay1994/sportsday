@@ -19,7 +19,13 @@ class Station(AbstractStation):
 
         student['points'] = int(student['points'])
         student['points'] += db.get_current_station()['points']
+
+        if student['ill']:
+            student['ill'] = False
+
         db.update_points(student)
+        db.update_student_ill(student)
+
         return True
 
     def manage_station(self):

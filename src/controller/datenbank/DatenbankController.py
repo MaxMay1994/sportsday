@@ -29,6 +29,10 @@ class DatenbankController(Controller):
         self.currentDB['students'].update_one({'number': data['number']},
                                               {'$set': {'points': data['points']}})
 
+    def update_student_ill(self, student):
+        self.currentDB['students'].update_one({'number': student['number']},
+                                              {'$set': {'ill': student['ill']}})
+
     def get_stations(self):
         return self.currentDB['station'].find()
 
