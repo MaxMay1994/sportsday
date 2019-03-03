@@ -19,7 +19,7 @@ class LoginController(Controller):
 
             return self.validate_login()
 
-        return render_template('login/login.', fehler=False)
+        return render_template('login/login.html', fehler=False)
 
     def logout(self):
         session.pop('username', None)
