@@ -1,5 +1,5 @@
 from src.controller import Controller
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, session
 from src.packages.login import Login
 
 
@@ -18,7 +18,7 @@ class LoginController(Controller):
 
             if information is not None:
                 login.login(information)
-                return render_template('login/login.html', fehler=response)
+                return redirect(url_for(session['defaultRoute']))
             response = True
 
         return render_template('login/login.html', fehler=response)
