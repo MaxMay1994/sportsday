@@ -1,8 +1,7 @@
 
-from flask import request, render_template, session, redirect, escape, url_for
+"""This is the parent-class in this class is no functionallity"""
 
 
 class Controller(object):
-
-    def main(self):
-        return render_template('/main/index.html')
+    def __init__(self):
+        pass

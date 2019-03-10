@@ -1,8 +1,6 @@
 import hashlib
 from flask import session, request, url_for
-from werkzeug.utils import redirect
-
-from src.controller.datenbank import DatenbankController
+from src.controller.database import DatabaseController
 from src.packages.login.abstract.AbstractLogin import AbstractLogin
 
 
@@ -15,7 +13,7 @@ class Login(AbstractLogin):
         self.stations = []
 
     def get_login_information(self):
-        db = DatenbankController()
+        db = DatabaseController()
 
         self.superUsers = db.get_information('superUser')
         self.stations = db.get_information('station')

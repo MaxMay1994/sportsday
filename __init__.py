@@ -1,9 +1,9 @@
-from flask import Flask, redirect, url_for, session, make_response
+from flask import Flask, redirect, url_for, session, make_response, request
 from src.controller.login import LoginController
-from src.controller import Controller
+from src.controller.main.MainController import MainController
 from src.controller.station import StationController
 from src.controller.error import ErrorController
-
+from src.controller.user import UserController
 
 app = Flask(__name__)
 # set Secret key
@@ -12,8 +12,8 @@ app.secret_key = b'_87fgT%5#8jsd32\n\xec]/'
 
 @app.route('/')
 def index():
-    obj = Controller()
-    return obj.main()
+    obj = MainController()
+    return obj.index()
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -29,6 +29,27 @@ def login_form():
 def logout():
     obj = LoginController()
     return obj.logout()
+
+
+@app.route('/user')
+def user_list():
+    obj = UserController()
+    return obj.user_list()
+
+
+@app.route('/user/<int:student_id>')
+def student_detail(student_id):
+    obj = UserController()
+    return obj.student_detail(student_id)
+
+
+@app.route('/user/search', methods=['POST'])
+def user_search():
+    if request.method == 'POST':
+        obj = UserController()
+        return obj.student_search(request.form['student_number'])
+
+    return ErrorController.get_error_template('Method not allowed', 405)
 
 
 @app.route('/station', methods=['GET', 'POST'])
@@ -131,7 +152,7 @@ def not_found(error):
 
 
 @app.errorhandler(405)
-def internal_error(error):
+def not_allowed(error):
     obj = ErrorController()
     return obj.get_error_template(error, 405)
 

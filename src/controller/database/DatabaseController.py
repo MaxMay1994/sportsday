@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from src.controller import Controller
 
 
-class DatenbankController(Controller):
+class DatabaseController(Controller):
     def __init__(self, server='localhost', port=27017, dbname='sportsday'):
         self.dbServer = server
         self.dbPort = port
@@ -11,10 +11,7 @@ class DatenbankController(Controller):
         self.currentDB = self.client[dbname]
 
     def get_information(self, collection):
-        self.information = []
-        for document in self.currentDB[collection].find():
-            self.information.append(document)
-        return self.information
+        return self.currentDB[collection].find()
 
     def get_current_station(self, collection='station'):
         return self.currentDB[collection].find_one({'stationname': session['username']})
@@ -35,6 +32,9 @@ class DatenbankController(Controller):
 
     def get_stations(self):
         return self.currentDB['station'].find()
+
+    def get_students(self):
+        return self.currentDB['']
 
     def insert_station(self, form, auth):
         result = self.currentDB['station'].insert_one(

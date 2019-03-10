@@ -1,9 +1,7 @@
 import time
 from random import randint
-
 from flask import request
-
-from src.controller.datenbank import DatenbankController
+from src.controller.database import DatabaseController
 from src.packages.login import Login
 from src.packages.station.abstract.AbstractStation import AbstractStation
 
@@ -11,7 +9,7 @@ from src.packages.station.abstract.AbstractStation import AbstractStation
 class Station(AbstractStation):
 
     def update_points(self):
-        db = DatenbankController()
+        db = DatabaseController()
         student = db.get_student_information({'number': request.form['student']})
 
         if student is None:
@@ -32,7 +30,7 @@ class Station(AbstractStation):
         pass
 
     def add_station(self):
-        db = DatenbankController()
+        db = DatabaseController()
         login = Login()
         auth = {'timestamp': time.time(), 'salt': randint(10, 99), 'pin': ''}
 

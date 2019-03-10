@@ -1,12 +1,12 @@
 from src.controller import Controller
-from src.controller.datenbank import DatenbankController
+from src.controller.database import DatabaseController
 from src.packages.station import Station
 from flask import redirect, url_for, render_template, request
 
 
 class StationController(Controller):
     def get_station(self):
-        db = DatenbankController()
+        db = DatabaseController()
         station_information = db.get_current_station()
 
         if request.method == 'POST':
@@ -18,7 +18,7 @@ class StationController(Controller):
         return render_template('station/station.html', station=station_information)
 
     def manage_station(self):
-        db = DatenbankController()
+        db = DatabaseController()
         cursor = db.get_stations()
 
         return render_template('station/station_manage.html', stationen=cursor)
