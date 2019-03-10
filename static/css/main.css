@@ -1,3 +1,7 @@
+body {
+    background: #ddd;
+}
+
 button .button {
     transition: border 1s ease-in-out 0;
 }
@@ -11,6 +15,7 @@ button .button {
 }
 
 input {
+    border: 1px solid #ffa500!important;
     background-color: transparent!important;
 }
 
@@ -76,19 +81,17 @@ color: #ffa500!important;
     background-color: rgba(245, 245, 245, 0.4) !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: #ffa500;
-}
-
-h1 {
-    font-size: 3rem;
-}
-
-h3 {
-    font-size: 1.5rem;
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    color: #ffa500!important;
 }
 
 .card-hover:hover {
     background-color: #ffa500!important;
     color: #ffffff!important;
+}
+
+.input-group-text {
+    border: 1px solid #ffa500!important;
+    background: rgba(255, 165, 0, 0.3);
+    color: #444!important;
 }
