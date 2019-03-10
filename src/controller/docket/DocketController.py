@@ -1,5 +1,5 @@
-from implementation.controller import Controller
-from implementation.controller.datenbank import DatenbankController
+from src.controller import Controller
+from src.controller.database import DatabaseController
 from flask import Flask, render_template, make_response
 import pdfkit
 import pyqrcode
@@ -9,8 +9,8 @@ import os
 import sys
 
 
-class PdfController(Controller):
-    db = DatenbankController()
+class DocketController(Controller):
+    db = DatabaseController()
 
     def __init__(self):
         pass
@@ -22,7 +22,7 @@ class PdfController(Controller):
         return qr.png('static/image/qrcode/' + key + '.png', scale=5)
 
     def create_pdf(self):
-        db = DatenbankController()
+        db = DatabaseController()
         year = datetime.datetime.now().year
         path = os.path.dirname(sys.modules['__main__'].__file__)
         image_path = path+'/static/image/qrcode/'
@@ -52,7 +52,7 @@ class PdfController(Controller):
         for i in range(students.__len__()):
            self.create_qr_code(self, students.__getitem__(i)['number'])
 
-        template = render_template('pdf/pdf.html',
+        template = render_template('docket/docket.html',
                                    station_table=station_table,
                                    year=year,
                                    students_table=students_table,
