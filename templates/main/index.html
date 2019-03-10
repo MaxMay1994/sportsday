@@ -1,0 +1,84 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <div class="row mb-5">
+        <div class="col-12 offset-xl-2 col-xl-8 text-center">
+            <h1 class="h1">Klara-Oppenheimer-Schule</h1>
+            <h2 class="h2">Sporttag</h2>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12 offset-md-1 col-md-5 offset-xl-2 col-xl-4">
+            <h5 class="h5">
+                Allgemeine Informationen:
+            </h5>
+            <p>
+                sdkfljafsdffdaskf sdfdfsdfsdfsfd sfdsdfsdfsdfsdfd<br>
+                sfdsdff klj lk kljklj lkjkl kljkl kljlk kjuigzg zugguzfsdfs sdfsdf <br>
+                sdkfljafsdffdaskf sdfdfsdfsdfsfd sfdsdfsdfsdfsdfd<br>
+                sfdsdff klj lk kljklj lkjkl kljkl kljlk kjuigzg zugguzfsdfs sdfsdf <br>
+                sdkfljafsdffdaskf sdfdfsdfsdfsfd sfdsdfsdfsdfsdfd<br>
+                sdkfljafsdffdaskf sdfdfsdfsdfsfd sfdsdfsdfsdfsdfd<br>
+                sfdsdff klj lk kljklj lkjkl kljkl kljlk kjuigzg zugguzf <br>
+            </p>
+        </div>
+        <div class="col-12 offset-md-1 col-md-5 offset-xl-2 col-xl-4">
+            <h5 class="h5">
+                Allgemeine Informationen:
+            </h5>
+            <p>
+                sdkfljafsdffdaskf sdfdfsdfsdfsfd sfdsdfsdfsdfsdfd<br>
+                sfdsdff klj lk kljklj lkjkl kljkl kljlk kjuigzg zugguzfsdfs sdfsdf <br>
+                sdkfljafsdffdaskf sdfdfsdfsdfsfd sfdsdfsdfsdfsdfd<br>
+                sfdsdff klj lk kljklj lkjkl kljkl kljlk kjuigzg zugguzfsdfs sdfsdf <br>
+                sdkfljafsdffdaskf sdfdfsdfsdfsfd sfdsdfsdfsdfsdfd<br>
+                sdkfljafsdffdaskf sdfdfsdfsdfsfd sfdsdfsdfsdfsdfd<br>
+                sfdsdff klj lk kljklj lkjkl kljkl kljlk kjuigzg zugguzf <br>
+            </p>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-12 text-center">
+            <h3 class="h3">Statistiken</h3>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-12 offset-md-3 col-md-6 offset-lg-4 col-lg-4">
+            <form action="/user/search" method="post">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="">Schülernummer</span>
+                  </div>
+                  <input type="text" class="form-control" name="student_number" placeholder="" aria-label="" aria-describedby="button-search">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="submit">Los!</button>
+                  </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-6 col-xl-4 mb-5">
+            <h5 class="h5 text-center">Balkendiagramm</h5>
+            <canvas id="myChart">
+                <script src="{{ url_for('static', filename='js/barchart.js') }}"></script>
+            </canvas>
+        </div>
+        <div class="col-12 col-md-6 col-xl-4 mb-5">
+            <h5 class="h5 text-center">Balkendiagramm</h5>
+            <canvas id="chartxy">
+                <script src="{{ url_for('static', filename='js/barchart3.js') }}"></script>
+            </canvas>
+        </div>
+        <div class="col-12 col-md-6 col-xl-4 mb-2">
+            <h5 class="h5 text-center">Vertikal</h5>
+            <canvas id="chartab">
+                <script src="{{ url_for('static', filename='js/barchart2.js') }}"></script>
+            </canvas>
+        </div>
+    </div>
+{% endblock %}
