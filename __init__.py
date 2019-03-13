@@ -4,6 +4,7 @@ from src.controller.main.MainController import MainController
 from src.controller.station import StationController
 from src.controller.error import ErrorController
 from src.controller.user import UserController
+from src.controller.schoolclasses import SchoolClassController
 
 app = Flask(__name__)
 # set Secret key
@@ -108,7 +109,17 @@ def manage_class():
     if 'role' not in session or session['role'] != 'superUser':
         return redirect(url_for('login_form'))
 
-    return 0
+    obj = SchoolClassController()
+    return obj.manage_class()
+
+
+@app.route('/dashboard/klasse/erstellen', methods=['GET', 'POST'])
+def add_class():
+    if 'role' not in session or session['role'] != 'superUser':
+        return redirect(url_for('login_form'))
+
+    obj = SchoolClassController()
+    return obj.add_class()
 
 
 @app.route('/dashboard/laufzettel')

@@ -45,3 +45,11 @@ class DatabaseController(Controller):
             return True
 
         return False
+
+    def get_classes(self):
+        return self.currentDB['class'].find()
+
+    def insert_class(self, form):
+        result = self.currentDB['class'].insert_one(
+            {'classname': form['classname'], 'amountStudents': form['amountStudents']})
+
