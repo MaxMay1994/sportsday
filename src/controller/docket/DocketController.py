@@ -21,7 +21,7 @@ class DocketController(Controller):
         qr = pyqrcode.create(url+key)
         return qr.png('static/image/qrcode/' + key + '.png', scale=5)
 
-    def create_pdf(self):
+    def generate_docket(self):
         db = DatabaseController()
         year = datetime.datetime.now().year
         path = os.path.dirname(sys.modules['__main__'].__file__)
