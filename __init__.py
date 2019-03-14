@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, session, make_response, request
+from flask import Flask, redirect, url_for, session, make_response, request, render_template
 from src.controller.login import LoginController
 from src.controller.main.MainController import MainController
 from src.controller.station import StationController
@@ -67,7 +67,7 @@ def dashboard():
     if 'role' not in session or session['role'] != 'superUser':
         return redirect(url_for('login_form'))
 
-    return redirect(url_for('manage_station'))
+    return render_template('main/dashboard.html')
 
 
 @app.route('/dashboard/station')
