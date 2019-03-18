@@ -1,5 +1,4 @@
-from flask import render_template, url_for
-from werkzeug.utils import redirect
+from flask import render_template, url_for, redirect
 
 from src.controller import Controller
 from src.controller.database import DatabaseController

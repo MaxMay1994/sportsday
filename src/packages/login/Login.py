@@ -1,7 +1,7 @@
 import hashlib
 from flask import session, request, url_for
-from src.controller.database import DatabaseController
-from src.packages.login.abstract.AbstractLogin import AbstractLogin
+from ...controller.database import DatabaseController
+from .abstract.AbstractLogin import AbstractLogin
 
 
 class Login(AbstractLogin):
