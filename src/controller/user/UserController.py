@@ -1,7 +1,7 @@
 from flask import render_template, url_for, redirect
 
-from src.controller import Controller
-from src.controller.database import DatabaseController
+from .. import Controller
+from ..database import DatabaseController
 
 
 class UserController(Controller):
