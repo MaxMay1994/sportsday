@@ -1,6 +1,6 @@
 import abc
 
-from src.packages.AbstractObject import AbstractObject
+from ... import AbstractObject
 
 
 class AbstractStation(AbstractObject):

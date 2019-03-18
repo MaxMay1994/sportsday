@@ -1,4 +1,4 @@
-from src.packages.superuser.abstract.AbstractSuperUser import AbstractSuperUser
+from .abstract.AbstractSuperUser import AbstractSuperUser
 
 
 class SuperUser(AbstractSuperUser):

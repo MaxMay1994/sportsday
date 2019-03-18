@@ -1,4 +1,4 @@
-from src.controller import Controller
+from .. import Controller
 from flask import render_template
 
 

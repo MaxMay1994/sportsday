@@ -1,6 +1,6 @@
 from flask import session
 from pymongo import MongoClient
-from src.controller import Controller
+from .. import Controller
 
 
 class DatabaseController(Controller):

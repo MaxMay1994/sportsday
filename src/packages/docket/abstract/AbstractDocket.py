@@ -1,4 +1,4 @@
-from src.packages.AbstractObject import AbstractObject
+from ...AbstractObject import AbstractObject
 
 
 class AbstractDocket(AbstractObject):

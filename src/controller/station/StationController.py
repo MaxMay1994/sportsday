@@ -1,6 +1,6 @@
-from src.controller import Controller
-from src.controller.database import DatabaseController
-from src.packages.station import Station
+from .. import Controller
+from ..database import DatabaseController
+from ...packages.station import Station
 from flask import redirect, url_for, render_template, request
 
 

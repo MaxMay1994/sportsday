@@ -1,9 +1,9 @@
 import time
 from random import randint
 from flask import request
-from src.controller.database import DatabaseController
-from src.packages.login import Login
-from src.packages.station.abstract.AbstractStation import AbstractStation
+from ...controller.database import DatabaseController
+from ..login import Login
+from .abstract.AbstractStation import AbstractStation
 
 
 class Station(AbstractStation):

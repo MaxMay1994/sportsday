@@ -1,4 +1,4 @@
-from src.packages.AbstractObject import AbstractObject
+from ... import AbstractObject
 
 
 class AbstractSuperUser(AbstractObject):

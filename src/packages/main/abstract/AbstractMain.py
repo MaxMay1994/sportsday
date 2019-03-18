@@ -1,4 +1,5 @@
-from src.packages import AbstractObject
+from ... import AbstractObject
+
 
 class AbstractMain(AbstractObject):
     def __init__(self):

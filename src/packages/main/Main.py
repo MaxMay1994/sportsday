@@ -1,5 +1,5 @@
-from src.controller.database import DatabaseController
-from src.packages.main.abstract import AbstractMain
+from ...controller.database import DatabaseController
+from .abstract import AbstractMain
 
 
 class Main(AbstractMain):

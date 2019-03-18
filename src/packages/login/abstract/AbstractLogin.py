@@ -1,5 +1,5 @@
 import abc
-from src.packages.AbstractObject import AbstractObject
+from ...AbstractObject import AbstractObject
 
 
 class AbstractLogin(AbstractObject):

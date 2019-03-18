@@ -1,5 +1,5 @@
-from src.controller import Controller
-from src.controller.database import DatabaseController
+from .. import Controller
+from ..database import DatabaseController
 from flask import Flask, render_template, make_response
 import pdfkit
 import pyqrcode
