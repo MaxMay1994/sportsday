@@ -1,10 +1,10 @@
 from flask import Flask, redirect, url_for, session, make_response, request
-from src.controller.login import LoginController
-from src.controller.main.MainController import MainController
-from src.controller.station import StationController
-from src.controller.docket import DocketController
-from src.controller.error import ErrorController
-from src.controller.user import UserController
+from .src.controller.login import LoginController
+from .src.controller.main.MainController import MainController
+from .src.controller.station import StationController
+from .src.controller.docket import DocketController
+from .src.controller.error import ErrorController
+from .src.controller.user import UserController
 
 app = Flask(__name__)
 # set Secret key
