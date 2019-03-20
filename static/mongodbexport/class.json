@@ -1,0 +1,6 @@
+{"_id":{"$oid":"5bed2778747e431754612a16"},"classname":"12FI4","amountStudents":24}
+{"_id":{"$oid":"5bed27de2e94c717544d261f"},"classname":"12FI3","amountStudents":18}
+{"_id":{"$oid":"5bed27f72e94c717544d2620"},"classname":"11FI2","amountStudents":21}
+{"_id":{"$oid":"5bed28162e94c717544d2621"},"classname":"10FI1","amountStudents":26}
+{"_id":{"$oid":"5bed282b2e94c717544d2622"},"classname":"10FI2","amountStudents":23}
+{"_id":{"$oid":"5bed28452e94c717544d2623"},"classname":"11FI4","amountStudents":17}
