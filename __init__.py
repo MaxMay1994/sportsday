@@ -183,4 +183,5 @@ def internal_error(error):
     return obj.get_error_template(error, 503)
 
 
-app.run()
+if __name__ == '__main__':
+    app.run()
