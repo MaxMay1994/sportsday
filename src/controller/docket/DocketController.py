@@ -1,5 +1,5 @@
-from src.controller import Controller
-from src.controller.database import DatabaseController
+from .. import Controller
+from ..database import DatabaseController
 from flask import Flask, render_template, make_response
 import pdfkit
 import pyqrcode
@@ -21,7 +21,7 @@ class DocketController(Controller):
         qr = pyqrcode.create(url+key)
         return qr.png('static/image/qrcode/' + key + '.png', scale=5)
 
-    def create_pdf(self):
+    def generate_docket(self):
         db = DatabaseController()
         year = datetime.datetime.now().year
         path = os.path.dirname(sys.modules['__main__'].__file__)
@@ -34,22 +34,22 @@ class DocketController(Controller):
 
         for i in range(row):
             for j in range(column):
-                if stations.__len__() > j + i*column:
+                if stations.count() > j + i*column:
                     station_table[i][j] = stations.__getitem__(j + i*column)
 
         # order by class
         students = db.get_information('students')
 
-        row = math.ceil(students.__len__() / 3.0)
+        row = math.ceil(students.count() / 3.0)
         column = 3
         students_table = [[0] * column for i in range(row)]
 
         for i in range(row):
             for j in range(column):
-                if students.__len__() > j + i*column:
+                if students.count() > j + i*column:
                     students_table[i][j] = students.__getitem__(j + i*column)
 
-        for i in range(students.__len__()):
+        for i in range(students.count()):
            self.create_qr_code(self, students.__getitem__(i)['number'])
 
         template = render_template('docket/docket.html',

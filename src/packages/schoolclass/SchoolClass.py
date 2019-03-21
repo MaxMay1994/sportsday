@@ -7,6 +7,7 @@ from src.packages.schoolclass.abstract.AbstractSchoolClass import AbstractSchool
 
 
 class SchoolClass(AbstractSchoolClass):
+    pass
 
     def add_class(self):
         db = DatabaseController()

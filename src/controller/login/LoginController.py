@@ -1,6 +1,6 @@
-from src.controller import Controller
+from .. import Controller
 from flask import render_template, request, redirect, url_for, session
-from src.packages.login import Login
+from ...packages.login import Login
 
 
 class LoginController(Controller):

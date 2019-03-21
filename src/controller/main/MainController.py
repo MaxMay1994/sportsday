@@ -1,5 +1,5 @@
 from flask import render_template
-from src.controller import Controller
+from .. import Controller
 
 
 class MainController(Controller):

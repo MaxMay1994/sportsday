@@ -1,0 +1,9 @@
+{"_id":{"$oid":"5bed2a18747e431754612a1d"},"number":"123456789","class":"12FI4","points":27,"ill":false}
+{"_id":{"$oid":"5bed2a832e94c717544d2628"},"number":"987654321","class":"11FI4","points":18,"ill":true}
+{"_id":{"$oid":"5bed2aae2e94c717544d2629"},"number":"654987123","class":"10FI1","points":0,"ill":true}
+{"_id":{"$oid":"5bed2ac92e94c717544d262a"},"number":"321789654","class":"12FI4","points":21,"ill":false}
+{"_id":{"$oid":"5bed2af92e94c717544d262b"},"number":"852159357","class":"10FI2","points":26,"ill":false}
+{"_id":{"$oid":"5bed2b1d2e94c717544d262c"},"number":"951369741","class":"11FI2","points":18,"ill":false}
+{"_id":{"$oid":"5bed2b442e94c717544d262d"},"number":"357951321","class":"11FI2","points":3,"ill":true}
+{"_id":{"$oid":"5bed2b6f2e94c717544d262e"},"number":"842369741","class":"10FI2","points":23,"ill":false}
+{"_id":{"$oid":"5bed2b882e94c717544d262f"},"number":"987159357","class":"10FI2","points":12,"ill":false}

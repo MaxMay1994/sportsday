@@ -1,10 +1,10 @@
-from flask import Flask, redirect, url_for, session, make_response, request, render_template
-from src.controller.login import LoginController
-from src.controller.main.MainController import MainController
-from src.controller.station import StationController
-from src.controller.error import ErrorController
-from src.controller.user import UserController
-from src.controller.schoolclasses import SchoolClassController
+from flask import Flask, redirect, url_for, session, make_response, request
+from .src.controller.login import LoginController
+from .src.controller.main.MainController import MainController
+from .src.controller.station import StationController
+from .src.controller.docket import DocketController
+from .src.controller.error import ErrorController
+from .src.controller.user import UserController
 
 app = Flask(__name__)
 # set Secret key
@@ -133,7 +133,8 @@ def dash_docket():
 @app.route('/dashboard/laufzettel/generieren')
 def generate_docket():
     if 'role' not in session or session['role'] != 'superUser':
-        return redirect(url_for('login_form'))
+        obj = DocketController()
+        return obj.generate_docket()
 
     return 0
 
@@ -192,4 +193,5 @@ def internal_error(error):
     return obj.get_error_template(error, 503)
 
 
-app.run()
+if __name__ == '__main__':
+    app.run()
