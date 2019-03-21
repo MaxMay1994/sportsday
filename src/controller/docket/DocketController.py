@@ -24,7 +24,7 @@ class DocketController(Controller):
     def generate_docket(self):
         db = DatabaseController()
         year = datetime.datetime.now().year
-        path = os.path.dirname(sys.modules['__main__'].__file__)
+        path = os.path.abspath('')
         image_path = path+'/static/image/qrcode/'
         image_format = '.png'
         stations = db.get_information('station')
