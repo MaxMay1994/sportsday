@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, session, make_response, request
+from flask import Flask, redirect, url_for, session, make_response, request, render_template
 from src.controller.login import LoginController
 from src.controller.main.MainController import MainController
 from src.controller.station import StationController
@@ -134,10 +134,10 @@ def dash_docket():
 @app.route('/dashboard/laufzettel/generieren')
 def generate_docket():
     if 'role' not in session or session['role'] != 'superUser':
-        obj = DocketController()
-        return obj.generate_docket()
+        return redirect(url_for('login_form'))
 
-    return 0
+    obj = DocketController()
+    return obj.generate_docket()
 
 # --------------------------------------------------------------
 #
