@@ -22,6 +22,9 @@ class DatabaseController(Controller):
     def get_station_information(self, filter_param):
         return self.currentDB['students'].find_one(filter_param)
 
+    def get_class_information(self, filter_param):
+        return self.currentDB['class'].find_one(filter_param)
+
     def update_points(self, data):
         self.currentDB['students'].update_one({'number': data['number']},
                                               {'$set': {'points': data['points']}})
@@ -49,7 +52,11 @@ class DatabaseController(Controller):
     def get_classes(self):
         return self.currentDB['class'].find()
 
-    def insert_class(self, form):
+    def insert_class(self, form, number):
         result = self.currentDB['class'].insert_one(
-            {'classname': form['classname'], 'amountStudents': form['amountStudents']})
+            {'classname': form['classname'], 'number': number, 'amountStudents': form['amountStudents']})
+
+    def insert_student(self, number, school_class):
+        result = self.currentDB['students'].insert_one(
+            {'number': number, 'class': school_class, 'points': 0, 'ill': False})
 
