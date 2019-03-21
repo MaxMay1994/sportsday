@@ -10,7 +10,7 @@ class Station(AbstractStation):
 
     def update_points(self):
         db = DatabaseController()
-        student = db.get_student_information({'number': request.form['student']})
+        student = db.get_student_information({'number': request.form['student[]']})
 
         if student is None:
             return False
