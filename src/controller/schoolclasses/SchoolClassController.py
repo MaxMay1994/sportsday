@@ -2,6 +2,7 @@ from src.controller.database import DatabaseController
 from src.controller import Controller
 from src.packages.schoolclass import SchoolClass
 from flask import redirect, url_for, render_template, request
+from src.controller.student.StudentController import StudentController
 
 
 class SchoolClassController(Controller):
@@ -19,9 +20,13 @@ class SchoolClassController(Controller):
 
         if request.method == 'POST':
             schoolclass = SchoolClass()
+            student_controller = StudentController()
             success = schoolclass.add_class()
-
+            # start move into if success
+            student_controller.add_students(request.form['classname'], request.form['amountStudents'])
+            # end move into if success
             if success:
+
                 return redirect(url_for('class_manage'))
 
             error = True
