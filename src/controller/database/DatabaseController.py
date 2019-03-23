@@ -20,7 +20,7 @@ class DatabaseController(Controller):
         return self.currentDB['students'].find_one(filter_param)
 
     def get_station_information(self, filter_param):
-        return self.currentDB['students'].find_one(filter_param)
+        return self.currentDB['station'].find_one(filter_param)
 
     def get_class_information(self, filter_param):
         return self.currentDB['class'].find_one(filter_param)
@@ -30,7 +30,7 @@ class DatabaseController(Controller):
                                               {'$set': {'points': data['points']}})
 
     def update_student_ill(self, student):
-        self.currentDB['students'].update_one({'number': student['number']},
+        return self.currentDB['students'].update_one({'number': student['number']},
                                               {'$set': {'ill': student['ill']}})
 
     def get_stations(self):
@@ -52,11 +52,26 @@ class DatabaseController(Controller):
     def get_classes(self):
         return self.currentDB['class'].find()
 
+    def update_station(self, search, update):
+        return self.currentDB['station'].update_one(search, update)
+
+    def update_class(self, search, update):
+        return self.currentDB['class'].update_one(search, update)
+
     def insert_class(self, form, number):
         result = self.currentDB['class'].insert_one(
             {'classname': form['classname'], 'number': number, 'amountStudents': form['amountStudents']})
+
+        return result
 
     def insert_student(self, number, school_class):
         result = self.currentDB['students'].insert_one(
             {'number': number, 'class': school_class, 'points': 0, 'ill': False})
 
+        return result
+
+    def delete_station(self, stationname):
+        return self.currentDB['station'].delete_one({"stationname": stationname})
+
+    def delete_class(self, classname):
+        return self.currentDB['class'].delete_one({"classname": classname})

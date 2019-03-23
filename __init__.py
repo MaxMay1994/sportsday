@@ -4,6 +4,7 @@ from src.controller.main.MainController import MainController
 from src.controller.station import StationController
 from src.controller.docket import DocketController
 from src.controller.error import ErrorController
+from src.controller.student.StudentController import StudentController
 from src.controller.user import UserController
 from src.controller.schoolclasses.SchoolClassController import SchoolClassController
 
@@ -68,7 +69,7 @@ def dashboard():
     if 'role' not in session or session['role'] != 'superUser':
         return redirect(url_for('login_form'))
 
-    return render_template('main/dashboard.html')
+    return render_template('main/dashboard.html', success=request.args.get('success'))
 
 
 @app.route('/dashboard/station')
@@ -105,7 +106,7 @@ def dash_class():
     return redirect(url_for('manage_class'))
 
 
-@app.route('/dashboard/klasse/verwalten')
+@app.route('/dashboard/klasse/verwalten', methods=['GET', 'POST'])
 def manage_class():
     if 'role' not in session or session['role'] != 'superUser':
         return redirect(url_for('login_form'))
@@ -138,6 +139,15 @@ def generate_docket():
 
     obj = DocketController()
     return obj.generate_docket()
+
+
+@app.route('/dashboard/schueler/krank', methods=['POST'])
+def ill():
+    if 'role' not in session or session['role'] != 'superUser':
+        return redirect(url_for('login_form'))
+
+    obj = StudentController()
+    return obj.set_ill_state()
 
 # --------------------------------------------------------------
 #

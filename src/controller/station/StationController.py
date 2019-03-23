@@ -30,10 +30,15 @@ class StationController(Controller):
         return render_template('station/station.html', station=station_information)
 
     def manage_station(self):
+        success = None
         db = DatabaseController()
         cursor = db.get_stations()
 
-        return render_template('station/station_manage.html', stationen=cursor)
+        if request.method == 'POST':
+            station = Station()
+            success = station.manage_station()
+
+        return render_template('station/station_manage.html', stationen=cursor, success=success)
 
     def add_station(self):
         error = False

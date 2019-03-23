@@ -13,7 +13,10 @@ class SchoolClassController(Controller):
         db = DatabaseController()
         cursor = db.get_classes()
 
-        return render_template('class/class_manage.html', classes=cursor)
+        schoolclass = SchoolClass()
+        success = schoolclass.manage_class()
+
+        return render_template('class/class_manage.html', classes=cursor, success=success)
 
     def add_class(self):
         error = False

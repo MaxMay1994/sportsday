@@ -1,42 +1,16 @@
 {% extends 'base/base.html' %}
 
+{% block nav%}
+    {% include 'base/nav/adminnav.html' %}
+{% endblock %}
+
 {% block content %}
-
-<nav class="navbar navbar-expand-sm bg-dark navbar-fixed-top">
-  <!-- Brand -->
-  <a class="navbar-brand" href="/dashboard">Klaraktiv</a>
-
-  <!-- Toggler/collapsibe Button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <!-- Navbar links -->
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/dashboard/station/verwalten">Stationen</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/dashboard/klasse/verwalten">Klassen</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">Statistik</a>
-      </li>
-    </ul>
-      <ul class="navbar-nav ml-auto">
-          <li>
-              <a class="nav-link" href="/logout">Logout</a>
-          </li>
-      </ul>
-  </div>
-</nav>
 
 <div class="row">
     <div class="offset-lg-3 col-lg-6 offset-2 col-8">
         <div class="row mb-2">
             <div class="col-12 text-center">
-                <h2>Klassen verwalten</h2>
+                <h2 class="h2">Klassen verwalten</h2>
             </div>
         </div>
         {% for class in classes %}
@@ -44,10 +18,10 @@
             <div class="col-12">
                 <div class="accordion" id="accordion-{{ class.classname }}">
                     <div class="card" id="card-{{ class.classname }}">
-                        <div class="card-header card-hover text-center" id="heading-{{ class.classname }}">
-                            <a class="font-primary" data-toggle="collapse"
+                        <div class="card-header card-hover text-center" id="heading-{{ class.classname }}" data-toggle="collapse"
                                data-target="#collapse-{{ class.classname }}" aria-expanded="true"
                                aria-controls="collapse-{{ class.classname }}">
+                            <a class="font-primary">
                                 {{ class.classname }}
                             </a>
                         </div>
@@ -75,8 +49,12 @@
 
                                     <div class="row">
                                         <div class="col-2"></div>
-                                        <div class="col-4">
-                                            <button type="submit" name="edit-{{ class.classname }}" onclick="edit({{ class.classname }})" class="btn btn-outline-primary">Bearbeiten
+                                        <div class="col-4" id="edit-{{ class.classname }}">
+                                            <button type="button" name="edit-{{ class.classname }}" onclick="edit('{{ class.classname }}')" class="btn btn-outline-primary">Bearbeiten
+                                            </button>
+                                        </div>
+                                        <div class="col-4 none" id="save-{{ class.classname }}">
+                                            <button type="submit" name="save-{{ class.classname }}" class="btn btn-outline-primary">Speichern
                                             </button>
                                         </div>
                                         <div class="col-4 text-right">
@@ -102,8 +80,20 @@
     </div>
 </div>
 <script>
-    function edit(class) {
-        $('#card-' + class)
+    function edit(schoolclass) {
+        objEdit = $('#edit-' + schoolclass)
+        objEdit.addClass('none')
+
+        objField = $('#classname-' + schoolclass)
+        objField.removeAttr('readonly')
+        objField.removeAttr('disabled')
+
+        objField = $('#amountStudents-' + schoolclass)
+        objField.removeAttr('readonly')
+        objField.removeAttr('disabled')
+
+        objSave = $('#save-' + schoolclass)
+        objSave.removeClass('none')
     }
 </script>
 

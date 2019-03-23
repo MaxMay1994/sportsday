@@ -1,41 +1,60 @@
 {% extends 'base/base.html' %}
 
+{% block nav %}
+    {% include 'base/nav/adminnav.html' %}
+{% endblock %}
+
 {% block content %}
-
-<nav class="navbar navbar-expand-sm bg-dark navbar-fixed-top">
-  <!-- Brand -->
-  <a class="navbar-brand" href="/dashboard">Klaraktiv</a>
-
-  <!-- Toggler/collapsibe Button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <!-- Navbar links -->
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/dashboard/station/verwalten">Stationen</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/dashboard/klasse/verwalten">Klassen</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">Statistik</a>
-      </li>
-    </ul>
-      <ul class="navbar-nav ml-auto">
-          <li>
-              <a class="nav-link" href="/logout">Logout</a>
-          </li>
-      </ul>
-  </div>
-</nav>
 
     <div class="row mb-5 mt-3">
         <div class="col-12 offset-xl-2 col-xl-8 text-center">
             <h1 class="h1">Klara-Oppenheimer-Schule</h1>
             <h2 class="h2">Klaraktiv</h2>
+        </div>
+    </div>
+
+    {% if success == 'true' %}
+        <div class="row">
+            <div class="offset-4 col-4 alert alert-success">
+                Schüler wurde erfolgreich krank gemeldet.
+            </div>
+        </div>
+    {% elif success == 'false' %}
+        <div class="row">
+            <div class="offset-4 col-4 alert alert-danger">
+                Bitte geben Sie die Schülernummer erneut ein.
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-12">
+            <form action="/dashboard/schueler/krank" method="post">
+                <div class="row">
+                    <div class="offset-4 col-4">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Schülernummer</span>
+                            </div>
+                            <input type="text" name="number" class="form-control" placeholder="z.B. 00589"
+                                   aria-label="studentnumber" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="offset-5 col-2 text-center">
+                        <button type="submit" class="btn btn-outline-primary">krankmelden</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 text-right">
+            <form action="/dashboard/database" method="post">
+                <button type="submit" class="btn btn-outline-danger">Datenbank löschen</button>
+            </form>
         </div>
     </div>
 

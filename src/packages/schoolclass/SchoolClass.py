@@ -1,8 +1,6 @@
-import time
 from random import randint
 from flask import request
 from src.controller.database import DatabaseController
-from src.packages.login import Login
 from src.packages.schoolclass.abstract.AbstractSchoolClass import AbstractSchoolClass
 
 
@@ -18,8 +16,33 @@ class SchoolClass(AbstractSchoolClass):
             if db.get_class_information({'number': number}) is None:
                 break
 
-        #login = Login()
-        #auth = {'timestamp': time.time(), 'salt': randint(10, 99), 'pin': ''}
-
-        #auth['pin'] = login.hash_password(request.form['pin'], auth['timestamp'], auth['salt'])
         return db.insert_class(request.form, number)
+
+    def manage_class(self):
+        db = DatabaseController()
+
+        if request.method == 'POST':
+            button = request.form.copy().popitem()[0]
+            delimiter_position = button.find('-')
+
+            # it's kinda weird, because we need the name of the station without -
+            # that's why we add to the position of the delimiter +1
+            class_name = button[delimiter_position + 1:]
+
+            if button[0:4] == "save":
+                search_dict = {'classname': class_name}
+                update_dict = {"$set": {"classname": request.form['classname-' + class_name],
+                                        "amountStudents": request.form['amountStudents-' + class_name]}}
+
+                result = db.update_class(search_dict, update_dict)
+
+                if result is not None:
+                    return True
+
+            elif button[0:6] == "delete":
+                result = db.delete_class(class_name)
+
+                if result is not None:
+                    return True
+
+        return False

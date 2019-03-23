@@ -1,8 +1,9 @@
+
 from src.controller.database import DatabaseController
 from src.controller import Controller
 from src.packages.student import Student
 import random
-from flask import request
+from flask import request, redirect
 
 
 class StudentController(Controller):
@@ -23,4 +24,20 @@ class StudentController(Controller):
             class_number = db.get_class_information({'classname': request.form['classname']}).get('number')
             student.add_student(str(class_number) + str(student_number), school_class)
 
+    def set_ill_state(self):
+        db = DatabaseController()
 
+        if request.method == 'POST':
+            student = db.get_student_information({'number': request.form['number']})
+
+            if student is None:
+                return redirect('/dashboard?success=false')
+
+            student_query = {'number': student['number'], 'ill': True}
+
+            success = db.update_student_ill(student_query)
+
+            if success is not None:
+                return redirect('/dashboard?success=true')
+
+            return redirect('/dashboard?success=false')

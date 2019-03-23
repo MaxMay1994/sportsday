@@ -1,42 +1,31 @@
 {% extends 'base/base.html' %}
 
+{% block nav %}
+    {% include 'base/nav/adminnav.html' %}
+{% endblock %}
+
 {% block content %}
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-fixed-top">
-  <!-- Brand -->
-  <a class="navbar-brand" href="/dashboard">Klaraktiv</a>
+{% if success is sameas true %}
+<div class="row">
+    <div class="offset-2 col-8 offset-lg-3 col-lg-6 alert alert-success">
+        Ihre Station wurde erfolgreich bearbeitet.
+    </div>
+</div>
+{% elif success is sameas false %}
+<div class="row">
+    <div class="offset-2 col-8 offset-lg-3 col-lg-6 alert alert-danger">
+        Beim Ändern der Station ist ein Fehler aufgetreten.
+    </div>
+</div>
+{% endif %}
 
-  <!-- Toggler/collapsibe Button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <!-- Navbar links -->
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/dashboard/station/verwalten">Stationen</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/dashboard/klasse/verwalten">Klassen</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">Statistik</a>
-      </li>
-    </ul>
-      <ul class="navbar-nav ml-auto">
-          <li>
-              <a class="nav-link" href="/logout">Logout</a>
-          </li>
-      </ul>
-  </div>
-</nav>
 
 <div class="row">
     <div class="offset-lg-3 col-lg-6 offset-2 col-8">
         <div class="row mb-2">
             <div class="col-12 text-center">
-                <h2>Stationen verwalten</h2>
+                <h2 class="h2">Stationen verwalten</h2>
             </div>
         </div>
         {% for station in stationen %}
@@ -44,10 +33,10 @@
             <div class="col-12">
                 <div class="accordion" id="accordion-{{ station.stationname }}">
                     <div class="card" id="card-{{ station.stationname }}">
-                        <div class="card-header card-hover text-center" id="heading-{{ station.stationname }}">
-                            <a class="font-primary" data-toggle="collapse"
+                        <div class="card-header card-hover text-center" id="heading-{{ station.stationname }}" data-toggle="collapse"
                                data-target="#collapse-{{ station.stationname }}" aria-expanded="true"
                                aria-controls="collapse-{{ station.stationname }}">
+                            <a class="font-primary">
                                 {{ station.stationname }}
                             </a>
                         </div>
@@ -99,8 +88,12 @@
 
                                     <div class="row">
                                         <div class="col-2"></div>
-                                        <div class="col-4">
-                                            <button type="submit" name="edit-{{ station.stationname }}" onclick="edit({{ station.stationname }})" class="btn btn-outline-primary">Bearbeiten
+                                        <div class="col-4" id="edit-{{ station.stationname }}">
+                                            <button type="button" name="edit-{{ station.stationname }}" onclick="edit('{{ station.stationname }}')" class="btn btn-outline-primary">Bearbeiten
+                                            </button>
+                                        </div>
+                                        <div class="col-4 none" id="save-{{ station.stationname }}">
+                                            <button type="submit" name="save-{{ station.stationname }}" class="btn btn-outline-primary">Speichern
                                             </button>
                                         </div>
                                         <div class="col-4 text-right">
@@ -127,7 +120,31 @@
 </div>
 <script>
     function edit(station) {
-        $('#card-' + station)
+        objEdit = $('#edit-' + station)
+        objEdit.addClass('none')
+
+        objField = $('#pin-' + station)
+        objField.removeAttr('readonly')
+        objField.removeAttr('disabled')
+
+        objField = $('#description-' + station)
+        objField.removeAttr('readonly')
+        objField.removeAttr('disabled')
+
+        objField = $('#area-' + station)
+        objField.removeAttr('readonly')
+        objField.removeAttr('disabled')
+
+        objField = $('#points-' + station)
+        objField.removeAttr('readonly')
+        objField.removeAttr('disabled')
+
+        objField = $('#stationname-' + station)
+        objField.removeAttr('readonly')
+        objField.removeAttr('disabled')
+
+        objSave = $('#save-' + station)
+        objSave.removeClass('none')
     }
 </script>
 {% endblock %}

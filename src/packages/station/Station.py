@@ -47,7 +47,38 @@ class Station(AbstractStation):
             return result
 
     def manage_station(self):
-        pass
+        db = DatabaseController()
+
+        if request.method == 'POST':
+            button = request.form.copy().popitem()[0]
+            delimiter_position = button.find('-')
+
+            # it's kinda weird, because we need the name of the station without -
+            # that's why we add to the position of the delimiter +1
+            station_name = button[delimiter_position + 1:]
+
+            if button[0:4] == "save":
+                search_dict = {'stationname': station_name}
+                update_dict = {"$set": {"stationname": request.form['stationname-' + station_name], "points": request.form['points-' + station_name], "area": request.form['area-' + station_name], "description": request.form['description-' + station_name]}}
+
+                if request.form['pin-'+station_name] != "":
+                    db_station = db.get_station_information({'stationname': station_name})
+                    pin_hash = Login().hash_password(request.form['pin-'+station_name], db_station['timestamp'], db_station['salt'])
+
+                    update_dict['$set']['pin'] = pin_hash
+
+                result = db.update_station(search_dict, update_dict)
+
+                if result is not None:
+                    return True
+
+            elif button[0:6] == "delete":
+                result = db.delete_station(station_name)
+
+                if result is not None:
+                    return True
+
+        return False
 
     def add_station(self):
         db = DatabaseController()
