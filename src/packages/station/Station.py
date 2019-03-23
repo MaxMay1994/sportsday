@@ -10,21 +10,41 @@ class Station(AbstractStation):
 
     def update_points(self):
         db = DatabaseController()
-        student = db.get_student_information({'number': request.form['student[]']})
+        number_input = []
+        students = []
+        result = {}
+        success = True
 
-        if student is None:
-            return False
+        number_input.append(request.form['student_number1'])
+        number_input.append(request.form['student_number2'])
+        number_input.append(request.form['student_number3'])
+        number_input.append(request.form['student_number4'])
+        number_input.append(request.form['student_number5'])
 
-        student['points'] = int(student['points'])
-        student['points'] += db.get_current_station()['points']
+        students.append(db.get_student_information({'number': number_input[0]}))
+        students.append(db.get_student_information({'number': number_input[1]}))
+        students.append(db.get_student_information({'number': number_input[2]}))
+        students.append(db.get_student_information({'number': number_input[3]}))
+        students.append(db.get_student_information({'number': number_input[4]}))
 
-        if student['ill']:
-            student['ill'] = False
+        for i in range(len(students)):
+            if students[i] is not None:
+                result[str(number_input[i])] = True
+                students[i]['points'] = int(students[i]['points'])
+                students[i]['points'] += db.get_current_station()['points']
 
-        db.update_points(student)
-        db.update_student_ill(student)
+                if students[i]['ill']:
+                    students[i]['ill'] = False
 
-        return True
+                db.update_points(students[i])
+                db.update_student_ill(students[i])
+            else:
+                if number_input[i]:
+                    result[str(number_input[i])] = False
+                    success = False
+
+        if not success:
+            return result
 
     def manage_station(self):
         pass
