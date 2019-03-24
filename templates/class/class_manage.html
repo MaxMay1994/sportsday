@@ -13,6 +13,19 @@
                 <h2 class="h2">Klassen verwalten</h2>
             </div>
         </div>
+        {% if success is sameas true %}
+            <div class="row">
+                <div class="col-12 alert alert-success">
+                    Ihre Station wurde erfolgreich bearbeitet.
+                </div>
+            </div>
+        {% elif success is sameas false %}
+            <div class="row">
+                <div class="col-12 alert alert-danger">
+                    Beim Ändern der Station ist ein Fehler aufgetreten.
+                </div>
+            </div>
+        {% endif %}
         {% for class in classes %}
         <div class="row mb-2">
             <div class="col-12">

@@ -10,13 +10,15 @@ class SchoolClass(AbstractSchoolClass):
     def add_class(self):
         db = DatabaseController()
 
-        # DO-WHILE ???
-        while True:
-            number = randint(100, 999)
-            if db.get_class_information({'number': number}) is None:
-                break
+        if request.form['amountStudents'].isdigit():
+            # DO-WHILE ???
+            while True:
+                number = randint(100, 999)
+                if db.get_class_information({'number': number}) is None:
+                    break
 
-        return db.insert_class(request.form, number)
+            return db.insert_class(request.form, number)
+        return False
 
     def manage_class(self):
         db = DatabaseController()
@@ -30,14 +32,16 @@ class SchoolClass(AbstractSchoolClass):
             class_name = button[delimiter_position + 1:]
 
             if button[0:4] == "save":
-                search_dict = {'classname': class_name}
-                update_dict = {"$set": {"classname": request.form['classname-' + class_name],
-                                        "amountStudents": request.form['amountStudents-' + class_name]}}
+                success = self.validate_request_data(class_name)
+                if success:
+                    search_dict = {'classname': class_name}
+                    update_dict = {"$set": {"classname": request.form['classname-' + class_name],
+                                            "amountStudents": int(request.form['amountStudents-' + class_name])}}
 
-                result = db.update_class(search_dict, update_dict)
+                    result = db.update_class(search_dict, update_dict)
 
-                if result is not None:
-                    return True
+                    if result is not None:
+                        return True
 
             elif button[0:6] == "delete":
                 result = db.delete_class(class_name)
@@ -46,3 +50,9 @@ class SchoolClass(AbstractSchoolClass):
                     return True
 
         return False
+
+    def validate_request_data(self, class_name):
+        if not request.form['amountStudents-' + class_name].isdigit():
+            return False
+
+        return True

@@ -16,7 +16,7 @@
         <div class="row mb-2">
             <div class="col-12">
                 <form action="/dashboard/klasse/erstellen" method="post">
-                    {% if error %}
+                    {% if error is sameas true %}
                     <div class="row mb-2">
                         <div class="offset-2 col-8">
                             <div class="alert alert-danger">

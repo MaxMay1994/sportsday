@@ -6,7 +6,7 @@
 
 {% block content %}
 
-    <div class="row mb-5 mt-3">
+    <div class="row mb-5 mt-3 mb-3">
         <div class="col-12 offset-xl-2 col-xl-8 text-center">
             <h1 class="h1">Klara-Oppenheimer-Schule</h1>
             <h2 class="h2">Klaraktiv</h2>
@@ -14,48 +14,62 @@
     </div>
 
     {% if success == 'true' %}
-        <div class="row">
+        <div class="row mb-3">
             <div class="offset-4 col-4 alert alert-success">
                 Schüler wurde erfolgreich krank gemeldet.
             </div>
         </div>
     {% elif success == 'false' %}
-        <div class="row">
+        <div class="row mb-3">
             <div class="offset-4 col-4 alert alert-danger">
                 Bitte geben Sie die Schülernummer erneut ein.
             </div>
         </div>
     {% endif %}
+    <div class="row mb-3">
+        <div class="offset-4 col-4">
+            <p>Sehr geehrter Admin,</p>
+            <p>
+                willkommen am Klaraktiv-System der Klara-Oppenheimer-Schule.
+                Aktuell befinden Sie sich auf dem Dashboard und können von hier aus auf jede Funktionalität des Systems zugreifen.
+                Um wieder auf dieses Dashboard zu gelangen klicken Sie in der Navigationsleiste auf den Bereich <strong>&gt;&gt;Klaraktiv&lt;&lt;</strong>
+            </p>
+            <p>
+                Über die Navigationsleiste können Sie ebenfalls auf <strong>&gt;&gt;Stationen&lt;&lt;</strong> und <strong>&gt;&gt;Klassen&lt;&lt;</strong>
+                zugreifen. Dort können Sie entweder neue anlegen oder bereits angelegte bearbeiten.
+            </p>
+            <p>
+                Auf der rechten Seite der Navigation finden Sie einen <strong>&gt;&gt;roten Button&lt;&lt;</strong>. Dieser löscht alle Daten, welche sich in der
+                Datenbank befinden. Gehen Sie daher mit der Funktion sorgfältig um.
+            </p>
 
+            <p>
+                Um Schüler krank zu melden, können Sie die Nummer des entsprechenden Schülers in das nachfolgende Input-Feld eintragen und anschließend auf
+                <strong>&gt;&gt;krankmelden&lt;&lt;</strong> klicken. Dadurch wird der Schüler nicht in der Statistik einberechnet. Sollte der Schüler jedoch verspätet
+                erscheinen, so kann er einfach mit dem Laufzettel Punkte verdienen und wird automatisch als anwesend markiert.
+            </p>
+        </div>
+    </div>
     <div class="row">
         <div class="col-12">
             <form action="/dashboard/schueler/krank" method="post">
-                <div class="row">
+                <div class="row mb-2">
                     <div class="offset-4 col-4">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Schülernummer</span>
-                            </div>
-                            <input type="text" name="number" class="form-control" placeholder="z.B. 00589"
-                                   aria-label="studentnumber" aria-describedby="basic-addon1">
-                        </div>
+                        <h4 class="h4">Kranke Schüler</h4>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="offset-5 col-2 text-center">
+                <div class="row mb-3">
+                    <div class="offset-4 col-4">
+                        <input type="text" name="number" class="form-control" placeholder="z.B. 00589"
+                                   aria-label="studentnumber" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="offset-6 col-2 text-right">
                         <button type="submit" class="btn btn-outline-primary">krankmelden</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-12 text-right">
-            <form action="/dashboard/database" method="post">
-                <button type="submit" class="btn btn-outline-danger">Datenbank löschen</button>
-            </form>
-        </div>
-    </div>
-
 {% endblock %}

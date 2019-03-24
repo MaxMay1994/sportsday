@@ -28,9 +28,9 @@ class SchoolClassController(Controller):
             # start move into if success
             student_controller.add_students(request.form['classname'], request.form['amountStudents'])
             # end move into if success
-            if success:
 
-                return redirect(url_for('class_manage'))
+            if success:
+                return redirect(url_for('manage_class'))
 
             error = True
 

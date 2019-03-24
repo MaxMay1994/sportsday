@@ -58,19 +58,21 @@ class Station(AbstractStation):
             station_name = button[delimiter_position + 1:]
 
             if button[0:4] == "save":
-                search_dict = {'stationname': station_name}
-                update_dict = {"$set": {"stationname": request.form['stationname-' + station_name], "points": request.form['points-' + station_name], "area": request.form['area-' + station_name], "description": request.form['description-' + station_name]}}
+                success = self.validate_request_data(station_name)
+                if success:
+                    search_dict = {'stationname': station_name}
+                    update_dict = {"$set": {"stationname": request.form['stationname-' + station_name], "points": int(request.form['points-' + station_name]), "area": request.form['area-' + station_name], "description": request.form['description-' + station_name]}}
 
-                if request.form['pin-'+station_name] != "":
-                    db_station = db.get_station_information({'stationname': station_name})
-                    pin_hash = Login().hash_password(request.form['pin-'+station_name], db_station['timestamp'], db_station['salt'])
+                    if request.form['pin-'+station_name] != "":
+                        db_station = db.get_station_information({'stationname': station_name})
+                        pin_hash = Login().hash_password(request.form['pin-'+station_name], db_station['timestamp'], db_station['salt'])
 
-                    update_dict['$set']['pin'] = pin_hash
+                        update_dict['$set']['pin'] = pin_hash
 
-                result = db.update_station(search_dict, update_dict)
+                    result = db.update_station(search_dict, update_dict)
 
-                if result is not None:
-                    return True
+                    if result is not None:
+                        return True
 
             elif button[0:6] == "delete":
                 result = db.delete_station(station_name)
@@ -85,5 +87,14 @@ class Station(AbstractStation):
         login = Login()
         auth = {'timestamp': time.time(), 'salt': randint(10, 99), 'pin': ''}
 
-        auth['pin'] = login.hash_password(request.form['pin'], auth['timestamp'], auth['salt'])
-        return db.insert_station(request.form, auth)
+        if request.form['points'].isdigit():
+            auth['pin'] = login.hash_password(request.form['pin'], auth['timestamp'], auth['salt'])
+            return db.insert_station(request.form, auth)
+
+        return False
+
+    def validate_request_data(self, station_name):
+        if not request.form['points-' + station_name].isdigit():
+            return False
+
+        return True
