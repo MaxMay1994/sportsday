@@ -36,6 +36,15 @@ input[type="radio"]:focus
     box-shadow: none!important;
 }
 
+nav.navbar {
+    color: white!important;
+    background: #666!important;
+}
+
+nav a {
+    color: white!important;
+}
+
 input[type="text"]:active,
 input[type="password"]:active,
 input[type="dropdown"]:active,
@@ -94,4 +103,8 @@ color: #ffa500!important;
     border: 1px solid #ffa500!important;
     background: rgba(255, 165, 0, 0.3);
     color: #444!important;
+}
+
+.none {
+    display: none;
 }

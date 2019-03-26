@@ -1,7 +1,114 @@
 {% extends 'base/base.html' %}
 
+{% block nav%}
+    {% include 'base/nav/adminnav.html' %}
+{% endblock %}
+
 {% block content %}
 
+<div class="row">
+    <div class="offset-lg-3 col-lg-6 offset-2 col-8">
+        <div class="row mb-2">
+            <div class="col-12 text-center">
+                <h2 class="h2">Klassen verwalten</h2>
+            </div>
+        </div>
+        {% if success is sameas true %}
+            <div class="row">
+                <div class="col-12 alert alert-success">
+                    Ihre Station wurde erfolgreich bearbeitet.
+                </div>
+            </div>
+        {% elif success is sameas false %}
+            <div class="row">
+                <div class="col-12 alert alert-danger">
+                    Beim Ändern der Station ist ein Fehler aufgetreten.
+                </div>
+            </div>
+        {% endif %}
+        {% for class in classes %}
+        <div class="row mb-2">
+            <div class="col-12">
+                <div class="accordion" id="accordion-{{ class.classname }}">
+                    <div class="card" id="card-{{ class.classname }}">
+                        <div class="card-header card-hover text-center" id="heading-{{ class.classname }}" data-toggle="collapse"
+                               data-target="#collapse-{{ class.classname }}" aria-expanded="true"
+                               aria-controls="collapse-{{ class.classname }}">
+                            <a class="font-primary">
+                                {{ class.classname }}
+                            </a>
+                        </div>
+
+                        <div id="collapse-{{ class.classname }}" class="collapse"
+                             aria-labelledby="heading-{{ class.classname }}"
+                             data-parent="#accordion-{{ class.classname }}">
+                            <div class="card-body">
+                                <form action="/dashboard/klasse/verwalten" method="post">
+                                    <div class="row mb-2">
+                                        <div class="offset-2 col-8">
+                                            <label for="classname-{{ class.classname }}">Klassenname</label>
+                                            <input type="text" class="form-control" name="classname-{{ class.classname }}" id="classname-{{ class.classname }}"
+                                                   readonly disabled value="{{ class.classname }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-2">
+                                        <div class="offset-2 col-8">
+                                            <label for="amountStudents-{{ class.classname }}">Anzahl Schüler</label>
+                                            <input type="text" class="form-control" name="amountStudents-{{ class.classname }}" id="amountStudents-{{ class.classname }}"
+                                                   readonly disabled value="{{ class.amountStudents }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-2"></div>
+                                        <div class="col-4" id="edit-{{ class.classname }}">
+                                            <button type="button" name="edit-{{ class.classname }}" onclick="edit('{{ class.classname }}')" class="btn btn-outline-primary">Bearbeiten
+                                            </button>
+                                        </div>
+                                        <div class="col-4 none" id="save-{{ class.classname }}">
+                                            <button type="submit" name="save-{{ class.classname }}" class="btn btn-outline-primary">Speichern
+                                            </button>
+                                        </div>
+                                        <div class="col-4 text-right">
+                                            <button type="submit" name="delete-{{ class.classname }}" class="btn btn-outline-danger">Löschen</button>
+                                        </div>
+                                        <div class="col-2"></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <a href="/dashboard/klasse/erstellen" class="btn btn-outline-primary w-25">
+                    Neu
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function edit(schoolclass) {
+        objEdit = $('#edit-' + schoolclass)
+        objEdit.addClass('none')
+
+        objField = $('#classname-' + schoolclass)
+        objField.removeAttr('readonly')
+        objField.removeAttr('disabled')
+
+        objField = $('#amountStudents-' + schoolclass)
+        objField.removeAttr('readonly')
+        objField.removeAttr('disabled')
+
+        objSave = $('#save-' + schoolclass)
+        objSave.removeClass('none')
+    }
+</script>
 
 
 {% endblock %}

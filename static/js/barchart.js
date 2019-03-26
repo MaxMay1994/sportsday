@@ -1,13 +1,33 @@
-var ctx = document.getElementById("myChart").getContext('2d');
+diagram()
 
-var myChart = new Chart(ctx, {
+function diagram() {
+    var ctx = document.getElementById("myChart").getContext('2d');
+
+    dataset = $.ajax({
+        type: "POST",
+        url: "/ajax/statistics/index/class",
+        async: false,
+
+        success: function(data, textStatus, jqXHR) {
+        },
+
+        error: function(jqXHR, textStatus, errorThrown) {
+        },
+
+        complete: function() {
+        }
+    });
+
+    var jsonObj = $.parseJSON(dataset.responseText);
+
+    var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: [],
         datasets: [
         {
-            label: 'Schüler xa',
-            data: [12],
+            label: jsonObj[0]['classname'],
+            data: [jsonObj[0]['points']],
             backgroundColor: [
                 'rgba(54, 162, 235, 0.2)'
             ],
@@ -17,8 +37,8 @@ var myChart = new Chart(ctx, {
             borderWidth: 1
         },
         {
-            label: 'Schüler ab',
-            data: [8],
+            label: jsonObj[1]['classname'],
+            data: [jsonObj[1]['points']],
             backgroundColor: [
                 'rgba(75, 192, 192, 0.2)'
             ],
@@ -28,8 +48,8 @@ var myChart = new Chart(ctx, {
             borderWidth: 1
         },
         {
-            label: 'Schüler xy',
-            data: [19],
+            label: jsonObj[2]['classname'],
+            data: [jsonObj[2]['points']],
             backgroundColor: [
 
                 'rgba(255, 159, 64, 0.2)'
@@ -53,3 +73,8 @@ var myChart = new Chart(ctx, {
         responsive: true
     }
 });
+}
+
+setInterval(function get_data(){
+    diagram()
+}, 10000);
