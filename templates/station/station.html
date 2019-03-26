@@ -32,13 +32,29 @@
 
                 {% if success is defined and success == 'False' %}
                     <div class="alert alert-danger">
-                        Die Schülernummer ist ungültig
+                        Ups! Diese Nummer/n gibt es nicht:
+                        <br>
+                        {% for number in fail %}
+                        <b>{{ number }}</b>
+                        <br>
+                        {%  endfor %}
                     </div>
+                    {% if ok|length > 0 %}
+                    <div class="alert alert-success">
+                        Den Schülern wurden die Punkte gutgeschrieben:
+                        <br>
+                        {% for number in ok %}
+                        <b>{{ number }}</b>
+                        <br>
+                        {%  endfor %}
+
+                    </div>
+                {% endif %}
                 {% endif %}
 
                 {% if success is defined and success == 'True' %}
                     <div class="alert alert-success">
-                        Dem Schüler wurden die Punkte gutgeschrieben
+                        Den Schülern wurden die Punkte gutgeschrieben
                     </div>
                 {% endif %}
 
@@ -47,35 +63,35 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Schülernummer</span>
                         </div>
-                        <input type="number" name="student[]" class="form-control" placeholder="z.B. 1234"
+                        <input type="number" name="student_number1" class="form-control" placeholder="z.B. 1234"
                                aria-label="station" aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3 mt-2">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Schülernummer</span>
                         </div>
-                        <input type="number" name="student[]" class="form-control" placeholder="z.B. 1234"
+                        <input type="number" name="student_number2" class="form-control" placeholder="z.B. 1234"
                                aria-label="station" aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3 mt-2">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Schülernummer</span>
                         </div>
-                        <input type="number" name="student[]" class="form-control" placeholder="z.B. 1234"
+                        <input type="number" name="student_number3" class="form-control" placeholder="z.B. 1234"
                                aria-label="station" aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3 mt-2">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Schülernummer</span>
                         </div>
-                        <input type="number" name="student[]" class="form-control" placeholder="z.B. 1234"
+                        <input type="number" name="student_number4" class="form-control" placeholder="z.B. 1234"
                                aria-label="station" aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3 mt-2">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Schülernummer</span>
                         </div>
-                        <input type="number" name="student[]" class="form-control" placeholder="z.B. 1234"
+                        <input type="number" name="student_number5" class="form-control" placeholder="z.B. 1234"
                                aria-label="station" aria-describedby="basic-addon1">
                     </div>
                     <div align="right">

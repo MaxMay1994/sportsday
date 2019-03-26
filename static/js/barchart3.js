@@ -1,13 +1,36 @@
-var ctx = document.getElementById("chartxy").getContext('2d');
+chartxy()
 
-var myChart = new Chart(ctx, {
-    type: 'horizontalBar',
+function chartxy() {
+    var ctx = document.getElementById("chartxy").getContext('2d');
+
+    dataset = $.ajax({
+        type: "POST",
+        url: "/ajax/statistics/index",
+        async: false,
+
+        success: function(data, textStatus, jqXHR) {
+
+        },
+
+        error: function(jqXHR, textStatus, errorThrown) {
+
+        },
+
+        complete: function() {
+
+        }
+    });
+
+    console.log(dataset)
+
+    var myChart = new Chart(ctx, {
+    type: 'bar',
     data: {
         labels: [],
         datasets: [
         {
-            label: 'Schüler xa',
-            data: [12],
+            label: dataset[0]['class'],
+            data: dataset[0]['points'],
             backgroundColor: [
                 'rgba(54, 162, 235, 0.2)'
             ],
@@ -17,8 +40,8 @@ var myChart = new Chart(ctx, {
             borderWidth: 1
         },
         {
-            label: 'Schüler ab',
-            data: [8],
+            label: dataset[1]['class'],
+            data: dataset[1]['points'],
             backgroundColor: [
                 'rgba(75, 192, 192, 0.2)'
             ],
@@ -28,8 +51,8 @@ var myChart = new Chart(ctx, {
             borderWidth: 1
         },
         {
-            label: 'Schüler xy',
-            data: [19],
+            label: dataset[1]['class'],
+            data: dataset[1]['points'],
             backgroundColor: [
 
                 'rgba(255, 159, 64, 0.2)'
@@ -53,3 +76,8 @@ var myChart = new Chart(ctx, {
         responsive: true
     }
 });
+}
+
+setInterval(function get_data(){
+    chartxy()
+}, 10000);

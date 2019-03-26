@@ -11,17 +11,34 @@ class StationController(Controller):
 
         if request.method == 'POST':
             station = Station()
-            success = station.update_points()
+            students = station.update_points()
 
-            return render_template('station/station.html', station=station_information, success=str(success))
+            if students is None:
+                return render_template('station/station.html', station=station_information, success='True')
+
+            # make pretty later
+            ok = []
+            fail = []
+            for i in range(len(students)):
+                if list(students.values())[i]:
+                    ok.append(list(students.keys())[i])
+                else:
+                    fail.append(list(students.keys())[i])
+
+            return render_template('station/station.html', station=station_information, success='False', fail=fail, ok=ok)
 
         return render_template('station/station.html', station=station_information)
 
     def manage_station(self):
+        success = None
         db = DatabaseController()
         cursor = db.get_stations()
 
-        return render_template('station/station_manage.html', stationen=cursor)
+        if request.method == 'POST':
+            station = Station()
+            success = station.manage_station()
+
+        return render_template('station/station_manage.html', stationen=cursor, success=success)
 
     def add_station(self):
         error = False

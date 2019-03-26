@@ -1,6 +1,29 @@
-var ctx = document.getElementById("chartab").getContext('2d');
+diagram()
 
-var myChart = new Chart(ctx, {
+function diagram() {
+    var ctx = document.getElementById("chartab").getContext('2d');
+
+    dataset = $.ajax({
+        type: "POST",
+        url: "/ajax/statistics/index",
+        async: false,
+
+        success: function(data, textStatus, jqXHR) {
+                console.log('yeah')
+        },
+
+        error: function(jqXHR, textStatus, errorThrown) {
+                console.log('noooo')
+        },
+
+        complete: function() {
+            console.log('finished')
+        }
+    });
+
+    console.log(dataset)
+
+    var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: [],
@@ -53,3 +76,8 @@ var myChart = new Chart(ctx, {
         responsive: true
     }
 });
+}
+
+setInterval(function get_data(){
+    diagram()
+}, 10000);
