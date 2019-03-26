@@ -31,7 +31,7 @@ class Station(AbstractStation):
             if students[i] is not None:
                 result[str(number_input[i])] = True
                 students[i]['points'] = int(students[i]['points'])
-                students[i]['points'] += db.get_current_station()['points']
+                students[i]['points'] += int(db.get_current_station()['points'])
 
                 if students[i]['ill']:
                     students[i]['ill'] = False

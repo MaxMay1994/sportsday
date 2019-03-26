@@ -37,12 +37,15 @@ class DatabaseController(Controller):
         return self.currentDB['station'].find()
 
     def get_students(self):
-        return self.currentDB['']
+        return self.currentDB['students'].find()
+
+    def get_students_by_class(self, classname):
+        return self.currentDB['students'].find({'class': classname})
 
     def insert_station(self, form, auth):
         result = self.currentDB['station'].insert_one(
             {'stationname': form['stationname'], 'points': form['points'], 'area': form['area'], 'pin': auth['pin'],
-             'description': form['description'], 'salt': auth['salt'], 'timestap': auth['timestamp']})
+             'description': form['description'], 'salt': auth['salt'], 'timestamp': auth['timestamp']})
 
         if result is not False and result is not None:
             return True
@@ -75,3 +78,17 @@ class DatabaseController(Controller):
 
     def delete_class(self, classname):
         return self.currentDB['class'].delete_one({"classname": classname})
+
+    def database_clear(self):
+        self.currentDB.drop_collection('station')
+        self.currentDB.drop_collection('class')
+        self.currentDB.drop_collection('students')
+
+    def delete_student(self, number):
+        self.currentDB['students'].delete_one({'number': number})
+
+    def delete_students(self, param):
+        self.currentDB['students'].delete_many(param)
+
+    def update_student(self, search, update):
+        self.currentDB['students'].update_one(search, update)

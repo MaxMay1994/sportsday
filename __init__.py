@@ -1,4 +1,8 @@
+import time
+
 from flask import Flask, redirect, url_for, session, make_response, request, render_template
+
+from src.controller.database import DatabaseController
 from src.controller.login import LoginController
 from src.controller.main.MainController import MainController
 from src.controller.station import StationController
@@ -124,15 +128,15 @@ def add_class():
     return obj.add_class()
 
 
-@app.route('/dashboard/laufzettel')
+@app.route('/dashboard/laufzettel', methods=['POST'])
 def dash_docket():
     if 'role' not in session or session['role'] != 'superUser':
         return redirect(url_for('login_form'))
 
-    return redirect(url_for('generate_docket'))
+    return render_template('docket/form.html')
 
 
-@app.route('/dashboard/laufzettel/generieren')
+@app.route('/dashboard/laufzettel/generieren', methods=['POST'])
 def generate_docket():
     if 'role' not in session or session['role'] != 'superUser':
         return redirect(url_for('login_form'))
@@ -148,6 +152,41 @@ def ill():
 
     obj = StudentController()
     return obj.set_ill_state()
+
+
+@app.route('/dashboard/database', methods=['POST'])
+def database():
+    if 'role' not in session or session['role'] != 'superUser':
+        return redirect(url_for('login_form'))
+
+    return render_template('database/database.html')
+
+
+@app.route('/dashboard/database/loeschen', methods=['POST'])
+def delete():
+    if 'role' not in session or session['role'] != 'superUser':
+        return redirect(url_for('login_form'))
+
+    obj = DatabaseController()
+    obj.database_clear()
+
+    return redirect(url_for('database_empty'))
+
+
+@app.route('/dashboard/database/leer', methods=['GET'])
+def database_empty():
+    if 'role' not in session or session['role'] != 'superUser':
+        return redirect(url_for('login_form'))
+
+    success_message = 'Die Datenbank wurde erfolgreich gelöscht.'
+    success_hint = 'Sie können nun neue Klassen und Stationen anlegen.'
+
+    return render_template('base/success_message.html', success_message=success_message, success_hint=success_hint)
+
+
+@app.route('/ajax/statistics/index/class', methods=['POST'])
+def statistics_index():
+    return AjaxController.schoolclass()
 
 # --------------------------------------------------------------
 #

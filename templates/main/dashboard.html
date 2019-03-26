@@ -6,7 +6,7 @@
 
 {% block content %}
 
-    <div class="row mb-5 mt-3 mb-3">
+    <div class="row mb-3">
         <div class="col-12 offset-xl-2 col-xl-8 text-center">
             <h1 class="h1">Klara-Oppenheimer-Schule</h1>
             <h2 class="h2">Klaraktiv</h2>
@@ -39,7 +39,9 @@
                 zugreifen. Dort können Sie entweder neue anlegen oder bereits angelegte bearbeiten.
             </p>
             <p>
-                Auf der rechten Seite der Navigation finden Sie einen <strong>&gt;&gt;roten Button&lt;&lt;</strong>. Dieser löscht alle Daten, welche sich in der
+                Auf der rechten Seite der Navigation können Sie die Laufzettel über den <strong>&gt;&gt;orangenen Button&lt;&lt;</strong> generieren lassen. Erst,
+                wenn alle Stationen und Klassen angelegt sind, sollten Sie den Laufzettel generieren. Der Vorgang kann ein paar Minuten dauern.
+                Daneben befindet sich ein <strong>&gt;&gt;roter Button&lt;&lt;</strong>. Dieser löscht alle Daten, welche sich in der
                 Datenbank befinden. Gehen Sie daher mit der Funktion sorgfältig um.
             </p>
 
@@ -50,7 +52,7 @@
             </p>
         </div>
     </div>
-    <div class="row">
+    <div class="row mb-2">
         <div class="col-12">
             <form action="/dashboard/schueler/krank" method="post">
                 <div class="row mb-2">
@@ -64,7 +66,7 @@
                                    aria-label="studentnumber" aria-describedby="basic-addon1">
                     </div>
                 </div>
-                <div class="row mb-3">
+                <div class="row">
                     <div class="offset-6 col-2 text-right">
                         <button type="submit" class="btn btn-outline-primary">krankmelden</button>
                     </div>

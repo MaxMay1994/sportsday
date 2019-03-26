@@ -17,12 +17,17 @@
         <a class="nav-link" href="/dashboard/klasse/verwalten">Klassen</a>
       </li>
         <li class="nav-item">
-        <a class="nav-link" href="#">Statistik</a>
+        <a class="nav-link" href="/">Statistik</a>
       </li>
     </ul>
       <ul class="navbar-nav ml-auto">
           <li class="mr-3">
               <a class="nav-link" href="/logout">Logout</a>
+          </li>
+          <li class="mr-3">
+            <form action="/dashboard/laufzettel" method="post">
+                <button type="submit" class="btn btn-outline-primary">Laufzettel generieren</button>
+            </form>
           </li>
           <li>
             <form action="/dashboard/database" method="post">
