@@ -21,4 +21,4 @@ class UserController(Controller):
             return redirect(url_for('student_detail', student_id=student_number))
 
     def student_detail(self, student_id):
-        pass
+        return render_template('student/detail.html')

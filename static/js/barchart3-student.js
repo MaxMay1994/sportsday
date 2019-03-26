@@ -7,9 +7,12 @@ setInterval(function get_data_2(){
 function chartxy() {
     var ctx = document.getElementById("chartxy").getContext('2d');
 
+    var str = window.location.pathname;
+    var res = str.substring(6, 11);
+
     dataset = $.ajax({
         type: "POST",
-        url: "/ajax/statistics/index/student",
+        url: "/ajax/statistics/student/class/" + res,
         async: false,
 
         success: function(data, textStatus, jqXHR) {
@@ -54,6 +57,18 @@ function chartxy() {
         {
             label: jsonObj[2]['studentnumber'],
             data: [jsonObj[2]['points']],
+            backgroundColor: [
+
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        },
+        {
+            label: jsonObj[3]['studentnumber'],
+            data: [jsonObj[3]['points']],
             backgroundColor: [
 
                 'rgba(255, 159, 64, 0.2)'

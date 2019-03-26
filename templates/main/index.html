@@ -1,14 +1,14 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-    <div class="row mb-5">
+    <div class="row mb-4">
         <div class="col-12 offset-xl-2 col-xl-8 text-center">
             <h1 class="h1">Klara-Oppenheimer-Schule</h1>
             <h2 class="h2">Klaraktiv</h2>
         </div>
     </div>
 
-    <div class="row mb-5">
+    <div class="row mb-4">
         <div class="col-12 offset-md-3 col-md-6 offset-xl-4 col-xl-4">
             <div class="row">
                 <div class="col-12">
@@ -42,7 +42,7 @@
         </div>
     </div>
 
-    <div class="row mb-3">
+    <div class="row mb-5">
         <div class="col-12 offset-md-3 col-md-6 offset-lg-4 col-lg-4">
             <form action="/user/search" method="post">
                 <div class="input-group mb-3">
@@ -59,23 +59,17 @@
     </div>
 
     <div class="row">
-        <div class="col-12 col-md-6 offset-xl-2 col-xl-4 mb-5">
-            <h5 class="h5 text-center">Balkendiagramm</h5>
+        <div class="col-12 col-md-6 offset-xl-2 col-xl-4 mb-4">
+            <h5 class="h5 text-center">Top3 Klassen</h5>
             <canvas id="myChart">
                 <script src="{{ url_for('static', filename='js/barchart.js') }}"></script>
             </canvas>
         </div>
-        <div class="col-12 col-md-6 col-xl-4 mb-5">
-            <h5 class="h5 text-center">Balkendiagramm</h5>
+        <div class="col-12 col-md-6 col-xl-4 mb-4">
+            <h5 class="h5 text-center">Top3 Schüler</h5>
             <canvas id="chartxy">
                 <script src="{{ url_for('static', filename='js/barchart3.js') }}"></script>
             </canvas>
         </div>
     </div>
-
-    <script>
-        $( document ).ready(function() {
-            console.log( "ready!" );
-        });
-    </script>
 {% endblock %}

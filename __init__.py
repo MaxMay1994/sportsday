@@ -1,7 +1,6 @@
-import time
-
 from flask import Flask, redirect, url_for, session, make_response, request, render_template
 
+from .src.controller.ajax import AjaxController
 from .src.controller.database import DatabaseController
 from .src.controller.login import LoginController
 from .src.controller.main.MainController import MainController
@@ -185,8 +184,23 @@ def database_empty():
 
 
 @app.route('/ajax/statistics/index/class', methods=['POST'])
-def statistics_index():
-    return AjaxController.schoolclass()
+def statistics_index_class():
+    return AjaxController().top_3_class()
+
+
+@app.route('/ajax/statistics/index/student', methods=['POST'])
+def statistics_index_student():
+    return AjaxController().top_3_student()
+
+
+@app.route('/ajax/statistics/student/class/<int:student_id>', methods=['POST'])
+def statistics_student_class(student_id):
+    return AjaxController().student_class(student_id)
+
+
+@app.route('/ajax/statistics/student/global/<int:student_id>', methods=['POST'])
+def statistics_student_global(student_id):
+    return AjaxController().student_global(student_id)
 
 # --------------------------------------------------------------
 #
