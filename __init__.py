@@ -2,15 +2,15 @@ import time
 
 from flask import Flask, redirect, url_for, session, make_response, request, render_template
 
-from src.controller.database import DatabaseController
-from src.controller.login import LoginController
-from src.controller.main.MainController import MainController
-from src.controller.station import StationController
-from src.controller.docket import DocketController
-from src.controller.error import ErrorController
-from src.controller.student.StudentController import StudentController
-from src.controller.user import UserController
-from src.controller.schoolclasses.SchoolClassController import SchoolClassController
+from .src.controller.database import DatabaseController
+from .src.controller.login import LoginController
+from .src.controller.main.MainController import MainController
+from .src.controller.station import StationController
+from .src.controller.docket import DocketController
+from .src.controller.error import ErrorController
+from .src.controller.student.StudentController import StudentController
+from .src.controller.user import UserController
+from .src.controller.schoolclasses.SchoolClassController import SchoolClassController
 
 app = Flask(__name__)
 # set Secret key

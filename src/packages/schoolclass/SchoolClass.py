@@ -1,7 +1,7 @@
 import random
 from flask import request
-from src.controller.database import DatabaseController
-from src.packages.schoolclass.abstract.AbstractSchoolClass import AbstractSchoolClass
+from ...controller.database import DatabaseController
+from ..schoolclass.abstract.AbstractSchoolClass import AbstractSchoolClass
 
 
 class SchoolClass(AbstractSchoolClass):

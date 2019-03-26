@@ -1,8 +1,8 @@
-from src.controller.database import DatabaseController
-from src.controller import Controller
-from src.packages.schoolclass import SchoolClass
+from ..database import DatabaseController
+from .. import Controller
+from ...packages.schoolclass import SchoolClass
 from flask import redirect, url_for, render_template, request
-from src.controller.student.StudentController import StudentController
+from ..student.StudentController import StudentController
 
 
 class SchoolClassController(Controller):
