@@ -1,27 +1,27 @@
 diagram()
 
 function diagram() {
-    var ctx = document.getElementById("chartab").getContext('2d');
+    var ctx = document.getElementById("myChart").getContext('2d');
+
+    var str = window.location.pathname;
+    var res = str.substring(6, 11);
 
     dataset = $.ajax({
         type: "POST",
-        url: "/ajax/statistics/index",
+        url: "/ajax/statistics/student/global/" + res,
         async: false,
 
         success: function(data, textStatus, jqXHR) {
-                console.log('yeah')
         },
 
         error: function(jqXHR, textStatus, errorThrown) {
-                console.log('noooo')
         },
 
         complete: function() {
-            console.log('finished')
         }
     });
 
-    console.log(dataset)
+    var jsonObj = $.parseJSON(dataset.responseText);
 
     var myChart = new Chart(ctx, {
     type: 'bar',
@@ -29,8 +29,8 @@ function diagram() {
         labels: [],
         datasets: [
         {
-            label: 'Schüler xa',
-            data: [12],
+            label: jsonObj[0]['studentnumber'],
+            data: [jsonObj[0]['points']],
             backgroundColor: [
                 'rgba(54, 162, 235, 0.2)'
             ],
@@ -40,8 +40,8 @@ function diagram() {
             borderWidth: 1
         },
         {
-            label: 'Schüler ab',
-            data: [8],
+            label: jsonObj[1]['studentnumber'],
+            data: [jsonObj[1]['points']],
             backgroundColor: [
                 'rgba(75, 192, 192, 0.2)'
             ],
@@ -51,8 +51,20 @@ function diagram() {
             borderWidth: 1
         },
         {
-            label: 'Schüler xy',
-            data: [19],
+            label: jsonObj[2]['studentnumber'],
+            data: [jsonObj[2]['points']],
+            backgroundColor: [
+
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        },
+        {
+            label: jsonObj[3]['studentnumber'],
+            data: [jsonObj[3]['points']],
             backgroundColor: [
 
                 'rgba(255, 159, 64, 0.2)'
