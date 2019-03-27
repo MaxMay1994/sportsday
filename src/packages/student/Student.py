@@ -1,6 +1,6 @@
-from src.controller.database import DatabaseController
+from ...controller.database import DatabaseController
 
-from src.packages.student.abstract.AbstractStudent import AbstractStudent
+from .abstract.AbstractStudent import AbstractStudent
 
 
 class Student(AbstractStudent):
