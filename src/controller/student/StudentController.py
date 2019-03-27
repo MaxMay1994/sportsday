@@ -1,7 +1,7 @@
 
-from src.controller.database import DatabaseController
-from src.controller import Controller
-from src.packages.student import Student
+from ..database import DatabaseController
+from .. import Controller
+from ...packages.student import Student
 import random
 from flask import request, redirect
 
