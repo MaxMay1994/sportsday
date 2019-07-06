@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta charset="utf-8"/>
 <head>
     {% set bootstrap_min_path =  path  +  '/static/css/bootstrap/bootstrap.min.css'  %}
     {% set bootstrap_path =  path +  '/static/css/bootstrap/main.css'  %}
@@ -38,21 +39,21 @@
                     {% for student in paper %}
 
                     {% set student_number %}{{ student.number }}{% endset %}
-                    {% set image_path =  image_path  +  student_number  +  image_format  %}
+                    {% set image_path =  image_path  +  image_format  %}
 
                     <td>
                         <table class="table table-bordered">
                             <tbody>
                                 <tr>
-                                    <th style="width: 50%" scope="col">Nummer: {{ student.number }}<br>Klasse: {{ student.class }}</th>
-                                    <th class="text-center" style="width: 50%; padding: 0px" scope="col"><img src="{{ image_path }}" style="width: 84px; height: 84px"></th>
+                                    <th style="width: 50%; font-size: 16px" scope="col">Nummer: {{ student.number }}<br>Klasse: {{ student.class }}</th>
+                                    <th class="text-center" style="width: 50%; padding: 0px" scope="col"><img src="{{ image_path }}" style="width: 164px; height: 84px"></th>
                                 </tr>
 
                                 {% for row in station_table %}
                                     <tr style="height: 100px">
 
                                         {% for cell in row %}
-                                            <td>
+                                            <td style="font-size: 13px">
 
                                                 {% if cell.stationname %}
                                                     <b>{{cell.stationname}}</b>

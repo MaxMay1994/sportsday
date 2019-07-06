@@ -25,8 +25,8 @@ class DocketController(Controller):
         db = DatabaseController()
         year = datetime.datetime.now().year
         path = os.path.abspath('')
-        image_path = path+'/static/image/qrcode/'
-        image_format = '.png'
+        image_path = path+'/static/image/Logo_Klaraktiv_2019_neu'
+        image_format = '.jpg'
         stations = db.get_information('station')
         row = 15
         column = 2
@@ -49,8 +49,8 @@ class DocketController(Controller):
                 if students.count() > j + i*column:
                     students_table[i][j] = students.__getitem__(j + i*column)
 
-        for i in range(students.count()):
-           self.create_qr_code(self, students.__getitem__(i)['number'])
+        #for i in range(students.count()):
+           #self.create_qr_code(self, students.__getitem__(i)['number'])
 
         template = render_template('docket/docket.html',
                                    station_table=station_table,
