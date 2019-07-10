@@ -24,7 +24,7 @@ class DocketController(Controller):
     def generate_docket(self):
         db = DatabaseController()
         year = datetime.datetime.now().year
-        path = os.path.abspath('')
+        path = '/var/www/klaraktiv/app'
         image_path = path+'/static/image/Logo_Klaraktiv_2019_neu'
         image_format = '.jpg'
         stations = db.get_information('station')
