@@ -37,13 +37,14 @@ class AjaxController(Controller):
 
         a = 0
 
-        for i in class_points:
-            for point in top_points:
+        for point in top_points:
+            for i in class_points:
                 if point == class_points[i] and i not in top_classes:
                     if a < 3:
                         top_classes[i] = True
                         top_3[a] = {'classname': i, 'points': point}
                         a += 1
+                        break
 
         top_3_json = json.dumps(top_3)
 
