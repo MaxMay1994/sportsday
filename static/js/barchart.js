@@ -29,7 +29,7 @@ function diagram() {
             label: jsonObj[0]['classname'],
             data: [jsonObj[0]['points']],
             backgroundColor: [
-                'rgba(54, 162, 235, 0.2)'
+                'rgba(54, 162, 235, 0.5)'
             ],
             borderColor: [
                 'rgba(54, 162, 235, 1)'
@@ -40,7 +40,7 @@ function diagram() {
             label: jsonObj[1]['classname'],
             data: [jsonObj[1]['points']],
             backgroundColor: [
-                'rgba(75, 192, 192, 0.2)'
+                'rgba(75, 192, 192, 0.5)'
             ],
             borderColor: [
                 'rgba(75, 192, 192, 1)'
@@ -52,7 +52,7 @@ function diagram() {
             data: [jsonObj[2]['points']],
             backgroundColor: [
 
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(255, 159, 64, 0.5)'
             ],
             borderColor: [
                 'rgba(255, 159, 64, 1)'

@@ -57,7 +57,7 @@ class AjaxController(Controller):
         checked_students = {}
         a = 0
 
-        students = self.__db.get_students()
+        students = list(self.__db.get_students())
 
         for student in students:
             top_students.append(student['points'])
@@ -67,15 +67,16 @@ class AjaxController(Controller):
             top_points.append(value)
             top_students.remove(value)
 
-        students.rewind()
+        #students.rewind()
 
-        for student in students:
-            for point in top_points:
+        for point in top_points:
+            for student in students:
                 if point == student['points'] and student['number'] not in checked_students:
                     if a < 3:
                         checked_students[student['number']] = True
                         top_3[a] = {'studentnumber': student['number'], 'points': point}
                         a += 1
+                        break
 
         top_3_json = json.dumps(top_3)
 
@@ -89,7 +90,7 @@ class AjaxController(Controller):
         point_list = []
         top_students = {}
 
-        students = self.__db.get_students_by_class(schoolclass['classname'])
+        students = list(self.__db.get_students_by_class(schoolclass['classname']))
 
         for student in students:
             point_list.append(student['points'])
@@ -101,15 +102,15 @@ class AjaxController(Controller):
 
         a = 1
 
-        students.rewind()
-
-        for student in students:
-            for point in top_points:
+        #students.rewind()
+        for point in top_points:
+            for student in students:
                 if point == student['points'] and student['number'] not in top_students:
                     if a < 4:
                         top_students[student['number']] = True
                         top_3[a] = {'studentnumber': student['number'], 'points': point}
                         a += 1
+                        break
 
         top_3_json = json.dumps(top_3)
 
@@ -124,7 +125,7 @@ class AjaxController(Controller):
         checked_students = {}
         a = 1
 
-        students = self.__db.get_students()
+        students = list(self.__db.get_students())
 
         for student in students:
             top_students.append(student['points'])
@@ -134,15 +135,15 @@ class AjaxController(Controller):
             top_points.append(value)
             top_students.remove(value)
 
-        students.rewind()
-
-        for student in students:
-            for point in top_points:
+        #students.rewind()
+        for point in top_points:
+            for student in students:
                 if point == student['points'] and student['number'] not in checked_students:
                     if a < 4:
                         checked_students[student['number']] = True
                         top_3[a] = {'studentnumber': student['number'], 'points': point}
                         a += 1
+                        break
 
         top_3_json = json.dumps(top_3)
 
